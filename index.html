@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+    
+    <!-- Header -->
+    <header>
+        <h1 class="bg-dark text-light text-center">Weather Dashboard</h1>
+    </header>
+
+    <!-- Wrapper -->
+    <main class="container-fluid d-flex">
+
+        <!-- Search Form -->
+        <form class="searchBar bg-light col-4">
+            <h2 class="text-dark">Search For A City:</h2>
+            <input id="searchCity" type="text" placeholder="Search for any city..." />
+            <button type="submit" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
+            <div class="card" id="locationResult"></div>
+        </form>
+     
+        <!-- Weather Display -->
+        <section class="rightContainer col-8 border">
+            <div id="weatherDisplay"></div>
+        </section>
+
+    </main>    
+
+    <!-- Five Day Forecast Cards -->
+    <h5>5-Day Forecast:</h5>
+    <section class="row flex-row justify-space-between">
+        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Date</div>
+            <div class="card-body">
+                <h5 class="card-title">Temperature</h5>
+                <p class="card-text">Humidity</p>
+            </div>
+        </div>
+    </section>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
