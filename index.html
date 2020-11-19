@@ -25,33 +25,35 @@
             
             <!-- Previous Locations (Underneath Search Form) -->
             <section class="card">
-                <div class="list-group list-group-flush" id="locationResult">TestTest</div>
+                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 1</div>
+                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 2</div>
+                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 3</div>
             </section>
         </form>
-
-        <!-- !!Extra Container, Use if Needed!! -->
-        <!-- <section id=cardContainer class="col-md-8 col-sm-12 border"> -->
         
         <!-- Weather Display Container (Right side of screen) -->
         <section id="cardContainer" class="rightContainer col-md-8 col-sm-12 border" style="height: fit-content">
             
             <!-- Weather Info Display (Cards) -->
-            <div id = "card-title" class="justify-content-sm-between d-inline-flex ">Title Test</div>
-            <div id="card-body" class="">Content Test No Need For Lorem</div>
+            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <figure class="card-body text-center">
+                    <div id = "weather-img"></div>
+                    <div id = "weather" class="justify-content-sm-between d-inline-flex "></div>
+                    <div id= "temp" class="card-text"></div>
+                    <div id = "humid"></div>
+                </figure>
+            </div>
 
-            <!-- !!Former Code, Possibly Reference Later!! -->
-            <!-- <div id="weatherDisplay" class="card-body"> Test Test Test </div> -->
-            <!-- <div id="card-body" class="">Test Test</div> -->
         </section>
 
         <!-- Remember: Need to find a way to move Forecast Cards Underneath our Weather Display Container, focus on JavaScript to get WeatherSearch working -->
 
 
     </main>    
-
+    
     <!-- Five Day Forecast Cards -->
-    <h5>5-Day Forecast:</h5> 
-    <section class="row flex-row justify-space-between">
+    <h5 class="d-flex justify-content-center">5-Day Forecast:</h5> 
+    <section class="d-flex justify-content-center">
         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="card-header">Date</div>
             <div class="card-body">
