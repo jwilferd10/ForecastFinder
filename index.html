@@ -21,7 +21,7 @@
         <form class="searchBar bg-light col-4">
             <h2 class="text-dark">Search For A City:</h2>
             <input id="searchCity" type="text" placeholder="Search for any city..." />
-            <button type="submit" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
+            <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
             
             <!-- Previous Locations (Underneath Search Form) -->
             <section class="card">
@@ -37,7 +37,8 @@
             <!-- Weather Info Display (Cards) -->
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                 <figure class="card-body text-center">
-                    <div id = "weather-img"></div>
+                    <div id = 'city-name'></div>
+                    <div id = "current-weather-img"></div>
                     <div id = "weather" class="justify-content-sm-between d-inline-flex "></div>
                     <div id= "temp" class="card-text"></div>
                     <div id = "humid"></div>
