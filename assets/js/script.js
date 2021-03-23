@@ -24,7 +24,7 @@ document.getElementById('searchButton').addEventListener('click', () => {
 });
 
 // Create a function that'll initialize the application and return the user input to the HTML
-function findWeather(resultFromServer){
+function findWeather(resultFromServer) {
     // Importing the index.html's ID's into the function.
     const currentConditionEl = document.getElementById('currentCondition');
     const currentTempEl = document.getElementById('currentTemp');
@@ -59,5 +59,12 @@ function findWeather(resultFromServer){
     console.log(resultFromServer);
 };
     
-
-    
+// function fiveDay() {
+//     fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
+//     .then(result => {
+//       return result.json(); // Return the appropriate JSON
+//     })
+//     .then(result => {
+//         findWeather(result); // Initialize the application
+//     });
+// }
