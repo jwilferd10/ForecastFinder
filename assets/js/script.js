@@ -28,7 +28,7 @@ function findWeather(resultFromServer) {
     // Importing the index.html's ID's into the function.
     const currentConditionEl = document.getElementById('currentCondition');
     const currentTempEl = document.getElementById('currentTemp');
-    const humidityElement = document.getElementById('humidity');
+    const humidityEl = document.getElementById('humidity');
     const windSpeedEl = document.getElementById('windSpeed');
     const cityNameEl = document.getElementById('cityName');
     const currentWeatherPNG = document.getElementById('currentWeatherPNG');
@@ -49,10 +49,10 @@ function findWeather(resultFromServer) {
     currentTempEl.innerHTML = 'Currently: ' + Math.floor(resultFromServer.main.temp) + ' &#176F';
     
     // Bring back the current wind velocity 
-    windSpeedEl.innerHTML = 'Winds: ' + Math.floor(resultFromServer.wind.speed) + ' velocity';
+    windSpeedEl.innerHTML = 'Winds: ' + Math.floor(resultFromServer.wind.speed) + ' mph';
 
     // Bring back the current humidity of searched city 
-    humidityElement.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
+    humidityEl.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
 
     // Console.log the results from the server
     // This is to see what information is transfered from the openweatherAPI
