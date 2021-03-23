@@ -5,91 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
     
     <!-- Header -->
     <header>
-        <h1 class="bg-dark text-light text-center">Weather Dashboard</h1>
+        <h1 class="bg-dark text-light text-center">Minimalist's Weather Dashboard</h1>
     </header>
 
     <!-- Main Wrapper -->
     <main class="container-fluid d-flex">
 
         <!-- Search Form (Top Left of Page) -->
-        <form class="searchBar bg-light col-4">
-            <h2 class="text-dark">Search For A City:</h2>
-            <input id="searchCity" type="text" placeholder="Search for any city..." />
+        <section class="searchBar bg-light col-4">
+            <h2 class="text-dark">Search a location:</h2>
+            <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
             <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
-            
-            <!-- Previous Locations (Underneath Search Form) -->
-            <section class="card">
-                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 1</div>
-                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 2</div>
-                <div class="list-group list-group-flush" id="locationResult">Hardcode Test 3</div>
-            </section>
-        </form>
+            <div class="card" id="locationResult"></div>
+        </section>
         
         <!-- Weather Display Container (Right side of screen) -->
         <section id="cardContainer" class="rightContainer col-md-8 col-sm-12 border" style="height: fit-content">
             
             <!-- Weather Info Display (Cards) -->
-            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <figure class="card-body text-center">
-                    <div id = 'city-name'></div>
-                    <div id = "current-weather-img"></div>
-                    <div id = "weather" class="justify-content-sm-between d-inline-flex "></div>
-                    <div id= "temp" class="card-text"></div>
-                    <div id = "humid"></div>
-                </figure>
-            </div>
-
+            <section id="weatherDisplay" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <section class="card-body text-center">
+                    <h1 id="cityName"></h1>
+                    <div id="weatherMain">
+                        <h4 id ="currentCondition"></h4>
+                        <div><img id="currentWeatherPNG"></div>
+                        <h4 id="currentTemp"></h4>
+                        <h4 id="windSpeed"></h4>
+                        <h4 id="humidity"></h4>
+                    </div>
+                </section>
+            </section>
         </section>
-
-        <!-- Remember: Need to find a way to move Forecast Cards Underneath our Weather Display Container, focus on JavaScript to get WeatherSearch working -->
-
-
-    </main>    
-    
-    <!-- Five Day Forecast Cards -->
-    <h5 class="d-flex justify-content-center">5-Day Forecast:</h5> 
-    <section class="d-flex justify-content-center">
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Date</div>
-            <div class="card-body">
-                <h5 class="card-title">Temperature</h5>
-                <p class="card-text">Humidity</p>
-            </div>
-        </div>
-
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Date</div>
-            <div class="card-body">
-                <h5 class="card-title">Temperature</h5>
-                <p class="card-text">Humidity</p>
-            </div>
-        </div>
-
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Date</div>
-            <div class="card-body">
-                <h5 class="card-title">Temperature</h5>
-                <p class="card-text">Humidity</p>
-            </div>
-        </div>
-
-        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <div class="card-header">Date</div>
-            <div class="card-body">
-                <h5 class="card-title">Temperature</h5>
-                <p class="card-text">Humidity</p>
-            </div>
-        </div>
-    </section>
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    </main>       
 <script src="assets/js/script.js"></script>
 </body>
 </html>
