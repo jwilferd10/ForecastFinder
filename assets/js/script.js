@@ -34,12 +34,8 @@ function findWeather(resultFromServer){
     const currentWeatherPNG = document.getElementById('currentWeatherPNG');
     
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
-    
-    // APPLY INNER HTML //
-    
-    //
     let weatherData = resultFromServer.weather[0].description;
-    
+
     // Take the current conditions and capitalize the first character
     currentConditionEl.innerText = weatherData.charAt(0).toUpperCase() + weatherData.slice(1);
 
