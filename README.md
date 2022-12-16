@@ -1,26 +1,27 @@
 # Minimalist's Weather Dashboard!
 
-## Deployed Application
+:computer: **Live Deployment**: https://jwilferd10.github.io/Weather-Dashboard/
 
-**Live Deployment**: https://jwilferd10.github.io/Weather-Dashboard/
+:computer: **Github Repository**: https://github.com/jwilferd10/Weather-Dashboard
 
-**Github Repository**: https://github.com/jwilferd10/Weather-Dashboard
+## :open_file_folder: Table of Contents:
+  - [Preview](#camera-preview)
+  - [Demo](#movie_camera-demo)
+  - [Description](#wave-description)
+  - [User Story](#book-user-story)
+  - [Resources Used](#floppy_disk-resources-used)
+  - [Installation](#minidisc-installation-and-usage)
+  - [Contact Information](#e-mail-contact-information)
 
-  ## Table of Contents 
-  - [Description](#description)
-  - [User Story](#user-story)
-  - [Usage](#usage)
-  - [Contact Information](#contact-information)
-
-## Screenshot of Deployed Application
+## :camera: Preview:
 ![image](dashboard.png)
 
-## Description:
+## :wave: Description: 
 This application uses openweathermap.org's current day weather forecast to display current conditions on the searched city. When I had first started learning how to code, this particular challenge gave me the most trouble. I didn't know what I was doing wrong and I was spooked to touch it. Many weeks later I decided to come back to this project and at least get ONE thing working. Having scrapped the original code I finally got it to display current weather conditions! There's definitely more to come once I've got more time. I'd like to add a five-day-forecast to this and put more code into this.<br>
 <br>
 Originally it was supposed to use jquery but back when I first started working on this I didn't understand it quite good. Returning back to this challenge, the jquery connection was taken out and just put together using JavaScript ES6 functions. 
   
-## User Story
+## :book: User Story:
 **AS A traveler**
 - I WANT to see the weather outlook for multiple cities
   - SO THAT I can plan a trip accordingly
@@ -29,9 +30,8 @@ Originally it was supposed to use jquery but back when I first started working o
 - WHEN I search for a city
   - THEN I am presented with current and future conditions for that city
 
-## Usage:
+## :minidisc: Installation and Usage:
    - Enter desired location!
   
-  ## Contact Information:
-  - Github: [jwilferd10](https://github.com/jwilferd10)
-  - Email: jwilferd10@yahoo.com 
+## :e-mail: Contact Information:
+- ### [jwilferd10](https://github.com/jwilferd10)
