@@ -9,15 +9,15 @@
 <body>
     
     <!-- Header -->
-    <header>
-        <h1 class="bg-dark text-light text-center">Your Weather Dashboard</h1>
+    <header class="bg-dark pb-1">
+        <h1 class="text-light text-center">Your Weather Dashboard</h1>
     </header>
 
     <!-- Main Wrapper -->
     <main class="container-fluid d-flex">
 
         <!-- Search Form (Top Left of Page) -->
-        <section class="searchBar bg-light col-4">
+        <section class="searchBar bg-light col-2">
             <h2 class="text-dark">Search a location:</h2>
             <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
             <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
@@ -25,25 +25,25 @@
         </section>
         
         <!-- Weather Display Container (Right side of screen) -->
-        <section id="cardContainer" class="rightContainer col-md-8 col-sm-12 border" style="height: fit-content">
-            <h1>Current Weather:</h1>
-            <!-- Weather Info Display (Cards) -->
-            <section id="weatherDisplay" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                <section class="card-body text-center">
-                    <h1 id="cityName"></h1>
-                    <div id="weatherMain">
-                        <h4 id ="currentCondition"></h4>
-                        <div><img id="currentWeatherPNG"></div>
-                        <h4 id="currentTemp"></h4>
-                        <h4 id="windSpeed"></h4>
-                        <h4 id="humidity"></h4>
+        <section id="cardContainer" class="rightContainer col-10 border" style="height: fit-content"> 
+            <!-- Today's Weather Display Wrapper -->
+            <div class="todayWrapper text-center">
+                <h1>Current Weather:</h1>
+                <div id="weatherDisplay" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                    <div class="card-body text-center">
+                        <h1 id="cityName"></h1>
+                        <div id="weatherMain">
+                            <h4 id ="currentCondition"></h4>
+                            <div><img id="currentWeatherPNG"></div>
+                            <h4 id="currentTemp"></h4>
+                            <h4 id="windSpeed"></h4>
+                            <h4 id="humidity"></h4>
+                        </div>
                     </div>
-                </section>
-            </section>
-        </section>
-    </main>      
-    
-    <!-- Five Day Forecast Cards -->
+                </div>
+            </div>
+
+        <!-- 5-Day Forecast -->
         <h5 class="d-flex justify-content-center">5-Day Forecast:</h5> 
         <section class="d-flex justify-content-center">
             <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
@@ -86,6 +86,8 @@
                 </div>
             </div>
         </section> 
+        </section>
+    </main>      
 <script src="assets/js/script.js"></script>
 </body>
 </html>
