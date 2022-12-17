@@ -10,7 +10,7 @@
     <body>
     
         <!-- Header -->
-        <header class="bg-dark pb-1">
+        <header class="bg-dark pb-2 mb-3">
             <h1 class="text-light text-center">Your Weather Dashboard</h1>
         </header>
 
@@ -30,14 +30,16 @@
                 <!-- Today's Weather Display Wrapper -->
                 <h1>Current Weather:</h1>
                 <!-- class="text-white bg-primary mb-3" style="max-width: 18rem;" -->
-                <div id="weatherDetails" class="text-white bg-primary">
-                    <h1 id="cityName"></h1>
-                    <div id="weatherMain">
-                        <h4 id ="currentCondition"></h4>
-                        <img id="currentWeatherPNG">
-                        <h4 id="currentTemp"></h4>
-                        <h4 id="windSpeed"></h4>
-                        <h4 id="humidity"></h4>
+                <div id="weatherDetails" class="text-white bg-primary card">
+                    <div class="card-body">
+                        <h1 id="cityName" class="card-title"></h1>
+                        <div id="weatherMain">
+                            <h4 id ="currentCondition"></h4>
+                            <img id="currentWeatherPNG">
+                            <h4 id="currentTemp"></h4>
+                            <h4 id="windSpeed"></h4>
+                            <h4 id="humidity"></h4>
+                        </div>
                     </div>
                 </div>
             </section>

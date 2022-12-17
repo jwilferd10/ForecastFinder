@@ -3,5 +3,7 @@
 } */
 
 #weatherDetails {
-    max-width: 18rem !important;
+    max-width: 18rem;
+    margin-left: auto;
+    margin-right: auto;
 }

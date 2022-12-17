@@ -31,7 +31,7 @@ function findWeather(resultFromServer) {
     const humidityEl = document.getElementById('humidity');
     const windSpeedEl = document.getElementById('windSpeed');
     const cityNameEl = document.getElementById('cityName');
-    // const currentWeatherPNG = document.getElementById('currentWeatherPNG');
+    const currentWeatherPNG = document.getElementById('currentWeatherPNG');
     
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
     let weatherData = resultFromServer.weather[0].description;
@@ -43,7 +43,7 @@ function findWeather(resultFromServer) {
     cityNameEl.innerHTML = resultFromServer.name; 
 
     // Present a png image of current weather conditions of searched location
-    // currentWeatherPNG.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
+    currentWeatherPNG.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
    
     // Brings back the current temperature of searched city
     currentTempEl.innerHTML = 'Currently: ' + Math.floor(resultFromServer.main.temp) + ' &#176F';
