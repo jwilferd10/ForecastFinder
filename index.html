@@ -18,17 +18,17 @@
         <main class="container-fluid d-flex">
 
             <!-- Search Form (Top Left of Page) -->
-            <section class="searchBar bg-light col-2">
-                <h2 class="text-dark">Search a location:</h2>
+            <section class="searchBar bg-light col-3">
+                <h2 class="text-dark">Search a location</h2>
                 <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
                 <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
                 <div class="card" id="locationResult"></div>
             </section>
         
             <!-- Weather Display Container (Right side of screen) -->
-            <section class="rightContainer col-10 border text-center"> 
+            <section class="rightContainer col-9 border text-center"> 
                 <!-- Today's Weather Display Wrapper -->
-                <h1>Current Weather:</h1>
+                <h2>Current Weather</h1>
                 <!-- class="text-white bg-primary mb-3" style="max-width: 18rem;" -->
                 <div id="weatherDetails" class="text-white bg-primary card">
                     <div class="card-body">
@@ -43,8 +43,10 @@
                     </div>
                 </div>
 
-                <!-- 5-Day Forecast -->
-                <h5 class="d-flex justify-content-center">5-Day Forecast:</h5> 
+                <!-- 5-Day Header -->
+                <h4 id="fiveDayHeader" class="d-flex justify-content-center">5-Day Forecast</h5> 
+
+                <!-- 5-Day Body -->
                 <section class="d-flex justify-content-center">
                 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
