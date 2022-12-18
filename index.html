@@ -15,75 +15,92 @@
         </header>
 
         <!-- Main Wrapper -->
-        <main class="container-fluid d-flex">
+        <main>
+            <section class="container-fluid d-flex">
+                <!-- Search Form (Top Left of Page) -->
+                <div class="searchBar col-3 border">
+                    <h3 class="pt-4 text-light">Search For A City:</h3>
+                    <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
+                    <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
+                    <!-- Previous Searches -->
+                    <h5 class="text-light">Previous Searches:</h5>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
+                    <div class="card" id="locationResult">234234</div>
 
-            <!-- Search Form (Top Left of Page) -->
-            <section class="searchBar col-2 border">
-                <h2 class="pt-4 text-light">Search a location</h2>
-                <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
-                <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
-                <div class="card" id="locationResult"></div>
-            </section>
+                </div>
         
-            <!-- Weather Display Container (Right side of screen) -->
-            <section class="rightContainer col-10 border text-center"> 
-                <!-- Today's Weather Display Wrapper -->
-                <h2 class="pt-4 text-light">Current Weather</h1>
-                <div id="weatherDetails" class="text-white cardColor card">
-                    <div class="card-body">
-                        <h1 id="cityName" class="card-title"></h1>
-                        <div id="weatherMain">
-                            <h4 id ="currentCondition"></h4>
-                            <img id="currentWeatherPNG">
-                            <h4 id="currentTemp"></h4>
-                            <h4 id="windSpeed"></h4>
-                            <h4 id="humidity"></h4>
+                <!-- Weather Display Container (Right side of screen) -->
+                <div class="rightContainer col-8 border text-center"> 
+                    <!-- Today's Weather Display Wrapper -->
+                    <h2 class="pt-4 text-light">Current Weather</h1>
+                    <div id="weatherDetails" class="text-white cardColor card">
+                        <div class="card-body">
+                            <h1 id="cityName" class="card-title"></h1>
+                            <div id="weatherMain">
+                                <h4 id ="currentCondition"></h4>
+                                <img id="currentWeatherPNG">
+                                <h4 id="currentTemp"></h4>
+                                <h4 id="windSpeed"></h4>
+                                <h4 id="humidity"></h4>
+                            </div>
                         </div>
                     </div>
                 </div>
+            </section>
 
+            <section>
                 <!-- 5-Day Header -->
-                <h4 id="fiveDayHeader" class="text-light d-flex justify-content-center">5-Day Forecast</h5> 
+                <h4 id="fiveDayHeader" class="text-light">5-Day Forecast</h5> 
 
                 <!-- 5-Day Body -->
-                <section class="d-flex justify-content-center">
-                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Temperature</h5>
-                        <p class="card-text">Humidity</p>
+                <div class="d-flex fiveContainer">
+                    <div class="fiveDayStyle card text-white cardColor mb-3">
+                        <div class="card-header">Date</div>
+                        <div class="card-body">
+                            <p class="card-title">Temp:<p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Temperature</h5>
-                        <p class="card-text">Humidity</p>
+    
+                    <div class="fiveDayStyle card text-white cardColor mb-3">
+                        <div class="card-header">Date</div>
+                        <div class="card-body">
+                            <p class="card-title">Temp:<p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Temperature</h5>
-                        <p class="card-text">Humidity</p>
+    
+                    <div class="fiveDayStyle card text-white cardColor mb-3">
+                        <div class="card-header">Date</div>
+                        <div class="card-body">
+                            <p class="card-title">Temp:<p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Temperature</h5>
-                        <p class="card-text">Humidity</p>
+    
+                    <div class="fiveDayStyle card text-white cardColor mb-3">
+                        <div class="card-header">Date</div>
+                        <div class="card-body">
+                            <p class="card-title">Temp:<p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
                     </div>
-                </div>
-            
-                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Date</div>
-                    <div class="card-body">
-                        <h5 class="card-title">Temperature</h5>
-                        <p class="card-text">Humidity</p>
+                
+                    <div class="fiveDayStyle card text-white cardColor mb-3">
+                        <div class="card-header">Date</div>
+                        <div class="card-body">
+                            <p class="card-title">Temp:<p>
+                            <p class="card-text">Humidity:</p>
+                        </div>
                     </div>
                 </div>
             </section>

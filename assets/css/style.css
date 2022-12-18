@@ -13,7 +13,11 @@ body {
 }
 
 .container-fluid {
-    column-gap: 5px;
+    column-gap: 15px;
+}
+
+.border {
+    border-radius: 25px;
 }
 
 #weatherDetails {
@@ -26,5 +30,15 @@ body {
 
 #fiveDayHeader {
     padding-top: 5px;
-    margin-top: 5%;
+    margin-left: 27%;
+}
+
+.fiveContainer {
+    column-gap: 20px;
+    height: 11rem;
+    margin-left: 27%;
+}
+
+.fiveDayStyle{
+    width: 10rem; 
 }
