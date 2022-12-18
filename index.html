@@ -10,7 +10,7 @@
     <body>
     
         <!-- Header -->
-        <header class="bg-dark pb-2 mb-3">
+        <header class="pb-2 mb-3 mt-3">
             <h1 class="text-light text-center">Your Weather Dashboard</h1>
         </header>
 
@@ -18,19 +18,18 @@
         <main class="container-fluid d-flex">
 
             <!-- Search Form (Top Left of Page) -->
-            <section class="searchBar bg-light col-3">
-                <h2 class="text-dark">Search a location</h2>
+            <section class="searchBar col-2 border">
+                <h2 class="pt-4 text-light">Search a location</h2>
                 <input id="searchInput" type="text" placeholder="Pick a city, any city..." />
                 <button type="button" class="btn btn-primary" id="searchButton" style="margin-bottom: 10px"> Search </button>
                 <div class="card" id="locationResult"></div>
             </section>
         
             <!-- Weather Display Container (Right side of screen) -->
-            <section class="rightContainer col-9 border text-center"> 
+            <section class="rightContainer col-10 border text-center"> 
                 <!-- Today's Weather Display Wrapper -->
-                <h2>Current Weather</h1>
-                <!-- class="text-white bg-primary mb-3" style="max-width: 18rem;" -->
-                <div id="weatherDetails" class="text-white bg-primary card">
+                <h2 class="pt-4 text-light">Current Weather</h1>
+                <div id="weatherDetails" class="text-white cardColor card">
                     <div class="card-body">
                         <h1 id="cityName" class="card-title"></h1>
                         <div id="weatherMain">
@@ -44,11 +43,11 @@
                 </div>
 
                 <!-- 5-Day Header -->
-                <h4 id="fiveDayHeader" class="d-flex justify-content-center">5-Day Forecast</h5> 
+                <h4 id="fiveDayHeader" class="text-light d-flex justify-content-center">5-Day Forecast</h5> 
 
                 <!-- 5-Day Body -->
                 <section class="d-flex justify-content-center">
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature</h5>
@@ -56,7 +55,7 @@
                     </div>
                 </div>
 
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature</h5>
@@ -64,7 +63,7 @@
                     </div>
                 </div>
 
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature</h5>
@@ -72,7 +71,7 @@
                     </div>
                 </div>
 
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature</h5>
@@ -80,7 +79,7 @@
                     </div>
                 </div>
             
-                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                <div class="card text-white cardColor mb-3" style="max-width: 18rem;">
                     <div class="card-header">Date</div>
                     <div class="card-body">
                         <h5 class="card-title">Temperature</h5>

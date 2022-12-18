@@ -46,10 +46,10 @@ function findWeather(resultFromServer) {
     currentWeatherPNG.src = 'http://openweathermap.org/img/w/' + resultFromServer.weather[0].icon + '.png';
    
     // Brings back the current temperature of searched city
-    currentTempEl.innerHTML = 'Currently: ' + Math.floor(resultFromServer.main.temp) + ' &#176F';
+    currentTempEl.innerHTML = 'Temperature: ' + Math.floor(resultFromServer.main.temp) + ' &#176F';
     
     // Bring back the current wind velocity 
-    windSpeedEl.innerHTML = 'Winds: ' + Math.floor(resultFromServer.wind.speed) + ' mph';
+    windSpeedEl.innerHTML = 'Wind Speed: ' + Math.floor(resultFromServer.wind.speed) + ' MPH';
 
     // Bring back the current humidity of searched city 
     humidityEl.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
