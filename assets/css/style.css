@@ -20,6 +20,12 @@ body {
     border-radius: 25px;
 }
 
+.card-header {
+    border-top-left-radius: 25px !important;
+    border-top-right-radius: 25px !important;
+    background-color: #363636;
+}
+
 #weatherDetails {
     max-width: 18rem;
     margin-left: auto;
@@ -35,7 +41,7 @@ body {
 
 .fiveContainer {
     column-gap: 20px;
-    height: 11rem;
+    height: 11.5rem;
     margin-left: 27%;
 }
 
