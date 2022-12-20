@@ -27,11 +27,12 @@ body {
 }
 
 #weatherDetails {
-    max-width: 18rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
     margin-top: 20px;
+    border-radius: 35px;
+}
+
+#currentWeatherPNG {
+    margin-left: 20px;
 }
 
 #fiveDayHeader {
