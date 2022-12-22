@@ -20,13 +20,19 @@
 Your Weather Dashboard is a weather app that utilizes openweathermap's API to display weather conditions to the user.
 
 ## :book: User Story:
-**AS A traveler**
-- I WANT to see the weather outlook for multiple cities
-  - SO THAT I can plan a trip accordingly
+**AS A  busy traveler**
+- I WANT to see the current weather of a city 
+  - SO THAT I can plan for the day
+- I WANT a five day forecast 
+  - SO THAT I can plan out my week
+- I WANT a list of previously searched locations
+  - SO THAT I know the weather for each destination 
 
 **GIVEN a weather dashboard with form inputs**
 - WHEN I search for a city
   - THEN I am presented with current and future conditions for that city
+  - THEN I am presented with the five day forecast 
+  - THEN I am presented a list of all previously searched locations
 
 ## :minidisc: Installation and Usage:
    - Enter desired location!
