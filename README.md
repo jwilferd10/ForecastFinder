@@ -35,7 +35,10 @@ Your Weather Dashboard is a weather app that utilizes openweathermap's API to di
   - THEN I am presented a list of all previously searched locations
 
 ## :minidisc: Installation and Usage:
-   - Enter desired location!
+   - Enter the name of the city
+   - Current conditions appear on the main box.
+   - Five day forecast appears at the bottom of current conditions
+   - For each search, previously searched cities will appear under the search input
   
 ## :e-mail: Contact Information:
 - ### [jwilferd10](https://github.com/jwilferd10)
