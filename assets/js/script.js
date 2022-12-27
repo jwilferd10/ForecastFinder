@@ -59,12 +59,3 @@ function findWeather(resultFromServer) {
     console.log(resultFromServer);
 };
     
-// function fiveDay() {
-//     fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
-//     .then(result => {
-//       return result.json(); // Return the appropriate JSON
-//     })
-//     .then(result => {
-//         findWeather(result); // Initialize the application
-//     });
-// }
