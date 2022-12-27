@@ -17,7 +17,7 @@
 ![image](dashboard.png)
 
 ## :wave: Description: 
-Your Weather Dashboard is a weather app that utilizes openweathermap's API to display weather conditions to the user.
+Your Weather Dashboard is a weather app that utilizes openweathermap's API to display the current weather conditions for any searched city. Also displayed is the five day forecast for that city, users past saves are added onto a list of previously searched locations for quick and easy access.
 
 ## :book: User Story:
 **AS A  busy traveler**
