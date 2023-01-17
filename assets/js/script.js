@@ -1,8 +1,5 @@
-// The appID should be a const that contains our apiKey
 const appID = '98c449ac6da7543bd710d0a40481466f';
-// We'll want the units to be imperial
 const units = 'imperial';
-// searchMethod will be an empty string
 const searchMethod = '';
 
 function weatherForecast(userInput) {
@@ -59,3 +56,12 @@ function findWeather(resultFromServer) {
     console.log(resultFromServer);
 };
     
+// Create a separate function for the five-day forecast
+
+// Collect data from the API
+
+// Create HTML elements to store the data and display to front-end
+
+// SETUP: Setup LocalStorage and save the previously searched location
+
+// the results from findWeather and fiveDay will be recalled when previously searched location is selected 
