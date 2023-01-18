@@ -2,6 +2,13 @@ const appID = '98c449ac6da7543bd710d0a40481466f';
 const units = 'imperial';
 const searchMethod = '';
 
+const currentConditionEl = document.getElementById('currentCondition');
+const currentTempEl = document.getElementById('currentTemp');
+const humidityEl = document.getElementById('humidity');
+const windSpeedEl = document.getElementById('windSpeed');
+const cityNameEl = document.getElementById('cityName');
+const currentWeatherPNG = document.getElementById('currentWeatherPNG');
+
 function weatherForecast(userInput) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
     .then(result => {
@@ -21,15 +28,7 @@ document.getElementById('searchButton').addEventListener('click', () => {
 });
 
 // Create a function that'll initialize the application and return the user input to the HTML
-function findWeather(resultFromServer) {
-    // Importing the index.html's ID's into the function.
-    const currentConditionEl = document.getElementById('currentCondition');
-    const currentTempEl = document.getElementById('currentTemp');
-    const humidityEl = document.getElementById('humidity');
-    const windSpeedEl = document.getElementById('windSpeed');
-    const cityNameEl = document.getElementById('cityName');
-    const currentWeatherPNG = document.getElementById('currentWeatherPNG');
-    
+function findWeather(resultFromServer) {    
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
     let weatherData = resultFromServer.weather[0].description;
 
