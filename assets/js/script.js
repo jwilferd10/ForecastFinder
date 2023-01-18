@@ -1,7 +1,6 @@
 const appID = '98c449ac6da7543bd710d0a40481466f';
 const units = 'imperial';
 const searchMethod = '';
-
 const currentConditionEl = document.getElementById('currentCondition');
 const currentTempEl = document.getElementById('currentTemp');
 const humidityEl = document.getElementById('humidity');
