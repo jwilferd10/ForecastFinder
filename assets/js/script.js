@@ -50,7 +50,6 @@ function findWeather(resultFromServer) {
     humidityEl.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
 
     // Console.log the results from the server
-    // This is to see what information is transfered from the openweatherAPI
     console.log(resultFromServer);
 };
     
