@@ -19,7 +19,9 @@ function weatherForecast(userInput) {
 };
     
 // Create an event listener for the search button
-document.getElementById('searchButton').addEventListener('click', () => {
+document.getElementById('searchButton').addEventListener('click', (event) => {
+    event.preventDefault();
+    
     // Take the value of the userInput
     let userInput = document.getElementById('searchInput').value;
     if(userInput)
