@@ -8,6 +8,8 @@ const windSpeedEl = document.getElementById('windSpeed');
 const cityNameEl = document.getElementById('cityName');
 const currentWeatherPNG = document.getElementById('currentWeatherPNG');
 
+///////////////////////////////////
+
 function weatherForecast(userInput) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
     .then(result => {
@@ -18,6 +20,8 @@ function weatherForecast(userInput) {
     });
 };
     
+///////////////////////////////////
+
 // Create an event listener for the search button
 document.getElementById('searchButton').addEventListener('click', (event) => {
     event.preventDefault();
@@ -27,6 +31,12 @@ document.getElementById('searchButton').addEventListener('click', (event) => {
     if(userInput)
     weatherForecast(userInput);
 });
+
+///////////////////////////////////
+
+// Event listener for form
+
+///////////////////////////////////
 
 // Create a function that'll initialize the application and return the user input to the HTML
 function findWeather(resultFromServer) {    
