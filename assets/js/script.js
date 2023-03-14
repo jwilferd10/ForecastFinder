@@ -34,7 +34,15 @@ document.getElementById('searchButton').addEventListener('click', (event) => {
 
 ///////////////////////////////////
 
-// Event listener for form
+// Event listener for form input
+document.getElementById('searchInput').addEventListener('keydown', (event) => {
+    if(event.code === "Enter") {
+        event.preventDefault();
+        let userInput = document.getElementById('searchInput').value;
+        weatherForecast(userInput);
+        // console.log(userInput);
+    }
+})
 
 ///////////////////////////////////
 
