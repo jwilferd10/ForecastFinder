@@ -78,6 +78,20 @@ function findWeather(resultFromServer) {
 // Collect data from the API
 
 // Create HTML elements to store the data and display to front-end
+function previousSearches() {
+    // collect userData from formEntry 
+
+    // Create a <p> or <span> element containing the userData
+
+    // append to <p> element
+
+    // append to previousSearches list on HTML
+
+    // if the previousSearch is clicked
+
+    // then re-search for that city
+}
+
 
 // SETUP: Setup LocalStorage and save the previously searched location
 
