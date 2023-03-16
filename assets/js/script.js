@@ -8,6 +8,8 @@ const windSpeedEl = document.getElementById('windSpeed');
 const cityNameEl = document.getElementById('cityName');
 const currentWeatherPNG = document.getElementById('currentWeatherPNG');
 
+const locationResultEl = document.getElementById('locationResult');
+
 ///////////////////////////////////
 
 function weatherForecast(userInput) {
@@ -30,6 +32,9 @@ document.getElementById('searchButton').addEventListener('click', (event) => {
     let userInput = document.getElementById('searchInput').value;
     if(userInput)
     weatherForecast(userInput);
+
+    // create a new listItem using userInput
+    previousSearches(userInput);
 });
 
 ///////////////////////////////////
@@ -39,8 +44,11 @@ document.getElementById('searchInput').addEventListener('keydown', (event) => {
     if(event.code === "Enter") {
         event.preventDefault();
         let userInput = document.getElementById('searchInput').value;
+        // request location data from API
         weatherForecast(userInput);
-        // console.log(userInput);
+        
+        // create a new listItem using userInput
+        previousSearches(userInput);
     }
 })
 
@@ -77,21 +85,36 @@ function findWeather(resultFromServer) {
 
 // Collect data from the API
 
+///////////////////////////////////
+
 // Create HTML elements to store the data and display to front-end
-function previousSearches() {
+function previousSearches(userInput) {
     // collect userData from formEntry 
 
     // Create a <p> or <span> element containing the userData
+    let listWrapperEl = document.createElement('li');
 
-    // append to <p> element
+    // locationWrapperEl.add("")
+
+    locationWrapperEl = document.createElement('span');
+
+    // append to <li> element
+    let locationTextEl = document.createTextNode(userInput);
+
+    // append to wrapperEl 
+    locationWrapperEl.appendChild(locationTextEl);
+
+    listWrapperEl.appendChild(locationWrapperEl);
 
     // append to previousSearches list on HTML
-
+    locationResultEl.appendChild(listWrapperEl);
+    
     // if the previousSearch is clicked
 
     // then re-search for that city
 }
 
+///////////////////////////////////
 
 // SETUP: Setup LocalStorage and save the previously searched location
 
