@@ -112,6 +112,8 @@ function previousSearches(userInput) {
     // if the previousSearch is clicked
 
     // then re-search for that city
+
+    // if city is already in previous search, do not add
 }
 
 ///////////////////////////////////
