@@ -24,33 +24,34 @@ function weatherForecast(userInput) {
     
 ///////////////////////////////////
 
-// Create an event listener for the search button
-document.getElementById('searchButton').addEventListener('click', (event) => {
+// 
+document.getElementById('searchButton').addEventListener('click', (event) => { 
     event.preventDefault();
-    
-    // Take the value of the userInput
-    let userInput = document.getElementById('searchInput').value;
-    if(userInput)
-    weatherForecast(userInput);
+    getResult();
+});
 
-    // create a new listItem using userInput
-    previousSearches(userInput);
+document.getElementById('searchInput').addEventListener('keydown', (event) => { 
+    if(event.code === "Enter") {
+        event.preventDefault();
+        getResult();
+    }
 });
 
 ///////////////////////////////////
 
-// Event listener for form input
-document.getElementById('searchInput').addEventListener('keydown', (event) => {
-    if(event.code === "Enter") {
-        event.preventDefault();
-        let userInput = document.getElementById('searchInput').value;
-        // request location data from API
+let getResult = function() {
+
+    // collect userInput 
+    let userInput = document.getElementById('searchInput').value;
+
+    if(userInput) {
+        // passes userInput to weatherForecast for search results
         weatherForecast(userInput);
-        
+
         // create a new listItem using userInput
-        previousSearches(userInput);
-    }
-})
+        previousSearches(userInput);   
+    } 
+}
 
 ///////////////////////////////////
 
@@ -114,6 +115,8 @@ function previousSearches(userInput) {
     // then re-search for that city
 
     // if city is already in previous search, do not add
+
+    // if userInput results in 404 from API, do not add input and include error.
 }
 
 ///////////////////////////////////
