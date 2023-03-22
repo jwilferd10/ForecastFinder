@@ -12,7 +12,7 @@ const locationResultEl = document.getElementById('locationResult');
 
 ///////////////////////////////////
 
-function weatherForecast() {
+let weatherForecast = function() {
 
     let userInput = document.getElementById('searchInput').value;
 
@@ -58,7 +58,7 @@ document.getElementById('searchInput').addEventListener('keydown', (event) => {
 ///////////////////////////////////
 
 // Create a function that'll initialize the application and return the user input to the HTML
-function findWeather(resultFromServer) {    
+let findWeather = function(resultFromServer) {    
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
     let weatherData = resultFromServer.weather[0].description;
 
@@ -103,7 +103,7 @@ function findWeather(resultFromServer) {
 ///////////////////////////////////
 
 // Create HTML elements to store the data and display to front-end
-function previousSearches(userInput) {
+let previousSearches = function(userInput) {
     // collect userData from formEntry 
 
     // Create a <p> or <span> element containing the userData
