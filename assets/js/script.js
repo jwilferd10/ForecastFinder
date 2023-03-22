@@ -90,6 +90,18 @@ function findWeather(resultFromServer) {
 
 ///////////////////////////////////
 
+// Commented out for now, will need to add more soon.
+
+// let checkForRepeat = function(userInput) {
+//     if (userInput.value === userInput.value) {
+//         return;
+//     } else {
+//         previousSearches(userInput);
+//     }
+// }
+
+///////////////////////////////////
+
 // Create HTML elements to store the data and display to front-end
 function previousSearches(userInput) {
     // collect userData from formEntry 
@@ -111,18 +123,20 @@ function previousSearches(userInput) {
 
     // append to previousSearches list on HTML
     locationResultEl.appendChild(listWrapperEl);
-    
-    // if the previousSearch is clicked
+}
+
+///////////////////////////////////
+
+// if the previousSearch is clicked
 
     // then re-search for that city
 
     // if city is already in previous search, do not add
 
-    // if userInput results in 404 from API, do not add input and include error.
-}
-
 ///////////////////////////////////
 
 // SETUP: Setup LocalStorage and save the previously searched location
 
-// the results from findWeather and fiveDay will be recalled when previously searched location is selected 
+    // the results from findWeather and fiveDay will be recalled when previously searched location is selected 
+
+///////////////////////////////////
