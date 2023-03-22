@@ -12,14 +12,31 @@ const locationResultEl = document.getElementById('locationResult');
 
 ///////////////////////////////////
 
-function weatherForecast(userInput) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
-    .then(result => {
-      return result.json(); // Return the appropriate JSON
-    })
-    .then(result => {
-        findWeather(result); // Initialize the application
-    });
+function weatherForecast() {
+
+    let userInput = document.getElementById('searchInput').value;
+
+    // if userInput is true, proceed to API
+    if (userInput) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
+        .then(result => {
+        return result.json();
+        })
+        .then(result => {
+            if (result.error) {
+                window.alert("Something went wrong!");
+            } else {
+                // collect weather results
+                findWeather(result); 
+                // create new listItem using userInput 
+                previousSearches(userInput);
+            }
+        })
+        .catch(error => {
+            // if error exists, inform user
+            window.alert("Please enter a valid city name!")
+        });
+    } 
 };
     
 ///////////////////////////////////
@@ -27,31 +44,31 @@ function weatherForecast(userInput) {
 // 
 document.getElementById('searchButton').addEventListener('click', (event) => { 
     event.preventDefault();
-    getResult();
+    weatherForecast();
 });
 
 document.getElementById('searchInput').addEventListener('keydown', (event) => { 
     if(event.code === "Enter") {
         event.preventDefault();
-        getResult();
+        weatherForecast();
     }
 });
 
 ///////////////////////////////////
 
-let getResult = function() {
+// let getResult = function() {
 
     // collect userInput 
-    let userInput = document.getElementById('searchInput').value;
+    // let userInput = document.getElementById('searchInput').value;
 
-    if(userInput) {
+    // if (userInput) {
         // passes userInput to weatherForecast for search results
-        weatherForecast(userInput);
+        // weatherForecast(userInput);
 
         // create a new listItem using userInput
-        previousSearches(userInput);   
-    } 
-}
+        // previousSearches(userInput);   
+    // }
+// }
 
 ///////////////////////////////////
 
