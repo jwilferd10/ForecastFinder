@@ -57,22 +57,6 @@ document.getElementById('searchInput').addEventListener('keydown', (event) => {
 
 ///////////////////////////////////
 
-// let getResult = function() {
-
-    // collect userInput 
-    // let userInput = document.getElementById('searchInput').value;
-
-    // if (userInput) {
-        // passes userInput to weatherForecast for search results
-        // weatherForecast(userInput);
-
-        // create a new listItem using userInput
-        // previousSearches(userInput);   
-    // }
-// }
-
-///////////////////////////////////
-
 // Create a function that'll initialize the application and return the user input to the HTML
 function findWeather(resultFromServer) {    
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
