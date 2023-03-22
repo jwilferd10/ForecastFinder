@@ -41,16 +41,17 @@ function weatherForecast() {
     
 ///////////////////////////////////
 
-// 
-document.getElementById('searchButton').addEventListener('click', (event) => { 
+// function runs when both formEntry means are engaged
+let handleSearch = function(event) {
     event.preventDefault();
     weatherForecast();
-});
+};
+
+document.getElementById('searchButton').addEventListener('click', handleSearch);
 
 document.getElementById('searchInput').addEventListener('keydown', (event) => { 
     if(event.code === "Enter") {
-        event.preventDefault();
-        weatherForecast();
+        handleSearch(event);
     }
 });
 
