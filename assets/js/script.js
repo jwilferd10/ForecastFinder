@@ -49,14 +49,6 @@ let handleSearch = function(event) {
     document.getElementById('formID').reset();
 };
 
-document.getElementById('searchButton').addEventListener('click', handleSearch);
-
-document.getElementById('searchInput').addEventListener('keydown', (event) => { 
-    if(event.code === "Enter") {
-        handleSearch(event);
-    }
-});
-
 ///////////////////////////////////
 
 // Create a function that'll initialize the application and return the user input to the HTML
@@ -157,5 +149,13 @@ let clearHistory = function() {
 
 ///////////////////////////////////
 
-// clearHistory btn has been clicked
+// Event Listeners
+document.getElementById('searchButton').addEventListener('click', handleSearch);
+
+document.getElementById('searchInput').addEventListener('keydown', (event) => { 
+    if(event.code === "Enter") {
+        handleSearch(event);
+    }
+});
+
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
