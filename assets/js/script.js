@@ -54,8 +54,14 @@ let handleSearch = function(event) {
 let clearHistory = function() {
 
     // console to check
-    console.log("I've been clicked");
-    // set the list back to an empty state
+    // console.log("I've been clicked");
+
+    let checkWithUser = window.confirm("Confirm that you want to clear this list");
+
+    if (checkWithUser) {
+            // set the list back to an empty state
+        document.getElementById("locationResult").innerHTML = ("");
+    }    
 };
 
 ///////////////////////////////////
