@@ -134,6 +134,15 @@ let previousSearches = function(userInput) {
 
 ///////////////////////////////////
 
+let clearHistory = function() {
+
+    // console to check
+    console.log("I've been clicked");
+    // set the list back to an empty state
+};
+
+///////////////////////////////////
+
 // previousSearch is clicked
 
     // then re-search for that city
@@ -147,3 +156,6 @@ let previousSearches = function(userInput) {
     // the results from findWeather and fiveDay will be recalled when previously searched location is selected 
 
 ///////////////////////////////////
+
+// clearHistory btn has been clicked
+document.getElementById('clearBtn').addEventListener('click', clearHistory);
