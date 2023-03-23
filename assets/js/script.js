@@ -45,6 +45,8 @@ let weatherForecast = function() {
 let handleSearch = function(event) {
     event.preventDefault();
     weatherForecast();
+
+    document.getElementById('formID').reset();
 };
 
 document.getElementById('searchButton').addEventListener('click', handleSearch);
