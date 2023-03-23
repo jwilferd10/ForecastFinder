@@ -118,6 +118,7 @@ let previousSearches = function(userInput) {
 
     // class for locationWrapperEl
     locationWrapperEl.classList.add("listItem");
+    locationWrapperEl.classList.add("card");
 
     // append to <li> element
     let locationTextEl = document.createTextNode(userInput);

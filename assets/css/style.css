@@ -20,6 +20,17 @@ body {
     border-radius: 25px;
 }
 
+#locationResult {
+    list-style-type: none !important;
+    padding: 0;
+}
+
+.listItem {
+    padding-left: 8px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
 .rightContainer {
     padding-bottom: 20px;
 }
