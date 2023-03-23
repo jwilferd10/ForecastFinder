@@ -83,10 +83,12 @@ let findWeather = function(resultFromServer) {
     // Console.log the results from the server
     console.log(resultFromServer);
 };
+
+///////////////////////////////////
     
 // Create a separate function for the five-day forecast
 
-// Collect data from the API
+    // Collect data from the API
 
 ///////////////////////////////////
 
@@ -109,9 +111,11 @@ let previousSearches = function(userInput) {
     // Create a <p> or <span> element containing the userData
     let listWrapperEl = document.createElement('li');
 
-    // locationWrapperEl.add("")
-
+    // wrapper and clickable element for textEl
     locationWrapperEl = document.createElement('span');
+
+    // class for locationWrapperEl
+    locationWrapperEl.classList.add("listItem");
 
     // append to <li> element
     let locationTextEl = document.createTextNode(userInput);
@@ -127,7 +131,7 @@ let previousSearches = function(userInput) {
 
 ///////////////////////////////////
 
-// if the previousSearch is clicked
+// previousSearch is clicked
 
     // then re-search for that city
 

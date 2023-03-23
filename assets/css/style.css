@@ -20,6 +20,10 @@ body {
     border-radius: 25px;
 }
 
+.rightContainer {
+    padding-bottom: 20px;
+}
+
 .card-header {
     border-top-left-radius: 25px !important;
     border-top-right-radius: 25px !important;
