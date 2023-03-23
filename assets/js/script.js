@@ -51,6 +51,23 @@ let handleSearch = function(event) {
 
 ///////////////////////////////////
 
+let clearHistory = function() {
+
+    // console to check
+    console.log("I've been clicked");
+    // set the list back to an empty state
+};
+
+///////////////////////////////////
+
+// previousSearch is clicked
+
+    // then re-search for that city
+
+    // if city is already in previous search, do not add
+
+///////////////////////////////////
+
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
@@ -123,23 +140,6 @@ let previousSearches = function(userInput) {
     // append to previousSearches list on HTML
     locationResultEl.appendChild(listWrapperEl);
 }
-
-///////////////////////////////////
-
-let clearHistory = function() {
-
-    // console to check
-    console.log("I've been clicked");
-    // set the list back to an empty state
-};
-
-///////////////////////////////////
-
-// previousSearch is clicked
-
-    // then re-search for that city
-
-    // if city is already in previous search, do not add
 
 ///////////////////////////////////
 
