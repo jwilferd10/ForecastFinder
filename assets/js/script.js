@@ -15,6 +15,7 @@ const searches = [];
 
 ///////////////////////////////////
 
+// collect weather data 
 let weatherForecast = function() {
 
     let userInput = document.getElementById('searchInput').value;
@@ -37,11 +38,25 @@ let weatherForecast = function() {
         })
         .catch(error => {
             // if error exists, inform user
-            window.alert("Please enter a valid city name!")
+            window.alert("Please enter a valid city name!");
         });
     } 
 };
     
+///////////////////////////////////
+
+// Five Day Forecast
+// let fiveDay = function() {
+//     fetch (`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon={lon}&appid={API key}`)
+// };
+
+console.log(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${appID}`)
+// collect the lat and lon of searched location. search parameter will be userInput 
+
+// using the fiveDay forecast, plug the lat and lon collected into 5Day link
+
+// Dynamically create HTML for data within returned JSON
+
 ///////////////////////////////////
 
 // function runs when both formEntry means are engaged
