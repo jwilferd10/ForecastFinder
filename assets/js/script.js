@@ -7,8 +7,11 @@ const humidityEl = document.getElementById('humidity');
 const windSpeedEl = document.getElementById('windSpeed');
 const cityNameEl = document.getElementById('cityName');
 const currentWeatherPNG = document.getElementById('currentWeatherPNG');
-
 const locationResultEl = document.getElementById('locationResult');
+
+let previousSearchID = 0;
+const searches = [];
+
 
 ///////////////////////////////////
 
@@ -153,6 +156,8 @@ let previousSearches = function(userInput) {
 ///////////////////////////////////
 
 // Event Listeners
+
+
 document.getElementById('searchButton').addEventListener('click', handleSearch);
 
 document.getElementById('searchInput').addEventListener('keydown', (event) => { 
