@@ -1,6 +1,7 @@
 :root {
     --primary-color: #121212;
     --success: green;
+    --redText: red;
     /* --secondary-color: null;
     --tertiary-color: null; */
 }
@@ -20,11 +21,6 @@ body {
 .border {
     border-radius: 25px;
 }
-
-/* .notifyUser {
-    display: none;
-    color: var(--success);
-} */
 
 #locationResult {
     list-style-type: none !important;

@@ -37,20 +37,26 @@ let weatherForecast = function() {
             if (result.error) {
                 window.alert("Something went wrong!");
             } else {
-                // collect weather results
-                findWeather(result); 
-                // create new listItem using userInput 
-                previousSearches(userInput);
 
                 // user notification
                 notifyUserEl.textContent = 'Search Successful!';
                 notifyUserEl.style.color = 'var(--success)';
                 showElement();
+
+                // collect weather results
+                findWeather(result); 
+                // create new listItem using userInput 
+                previousSearches(userInput);
             }
         })
         .catch(error => {
             // if error exists, inform user
             window.alert("Please enter a valid city name!");
+
+            // user notification
+            notifyUserEl.textContent = 'Something went wrong!';
+            notifyUserEl.style.color = 'var(--red)';
+            showElement();
         });
     } 
 };
@@ -102,8 +108,13 @@ let clearHistory = function() {
     let checkWithUser = window.confirm("Confirm that you want to clear this list");
 
     if (checkWithUser) {
-            // set the list back to an empty state
-        document.getElementById("locationResult").innerHTML = ("");
+        // set the list back to an empty state
+        locationResultEl.innerHTML = ("");
+        
+        // user notification
+        notifyUserEl.textContent = 'Search history deleted!';
+        notifyUserEl.style.color = 'var(--red)';
+        showElement();
     }    
 };
 
