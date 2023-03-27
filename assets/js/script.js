@@ -1,4 +1,7 @@
 const appID = '98c449ac6da7543bd710d0a40481466f';
+
+///////////////////////////////////
+
 const units = 'imperial';
 const searchMethod = '';
 const currentConditionEl = document.getElementById('currentCondition');
@@ -8,6 +11,10 @@ const windSpeedEl = document.getElementById('windSpeed');
 const cityNameEl = document.getElementById('cityName');
 const currentWeatherPNG = document.getElementById('currentWeatherPNG');
 const locationResultEl = document.getElementById('locationResult');
+
+///////////////////////////////////
+
+let notifyUserEl = document.getElementById('notifyUser');
 
 let previousSearchID = 0;
 const searches = [];
@@ -34,6 +41,11 @@ let weatherForecast = function() {
                 findWeather(result); 
                 // create new listItem using userInput 
                 previousSearches(userInput);
+
+                // user notification
+                notifyUserEl.textContent = 'Search Successful!';
+                notifyUserEl.style.color = 'var(--success)';
+                showElement();
             }
         })
         .catch(error => {
@@ -57,6 +69,22 @@ console.log(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid
 
 // Dynamically create HTML for data within returned JSON
 
+///////////////////////////////////
+
+let showElement = function() {
+    notifyUserEl.style.display = 'block';
+    setTimeout(hideElement, 3000);
+};
+
+let hideElement = function() {
+    notifyUserEl.style.display='none';
+    // setTimeout(hideElement, 3000);
+};
+
+// const notifyTimer = function() {
+//     setTimeout(hideElement, 3000);
+//     showElement;
+// }
 ///////////////////////////////////
 
 // function runs when both formEntry means are engaged
