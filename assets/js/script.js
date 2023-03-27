@@ -77,6 +77,7 @@ console.log(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid
 
 ///////////////////////////////////
 
+// Notification visibility functions 
 let showElement = function() {
     notifyUserEl.style.display = 'block';
     setTimeout(hideElement, 3000);
@@ -84,13 +85,8 @@ let showElement = function() {
 
 let hideElement = function() {
     notifyUserEl.style.display='none';
-    // setTimeout(hideElement, 3000);
 };
 
-// const notifyTimer = function() {
-//     setTimeout(hideElement, 3000);
-//     showElement;
-// }
 ///////////////////////////////////
 
 // function runs when both formEntry means are engaged
@@ -110,7 +106,7 @@ let clearHistory = function() {
     if (checkWithUser) {
         // set the list back to an empty state
         locationResultEl.innerHTML = ("");
-        
+
         // user notification
         notifyUserEl.textContent = 'Search history deleted!';
         notifyUserEl.style.color = 'var(--red)';
