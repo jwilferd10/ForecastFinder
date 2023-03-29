@@ -45,6 +45,10 @@ let weatherForecast = function() {
 
                 // collect weather results
                 findWeather(result); 
+
+                // five day call
+                fiveDay(userInput);
+
                 // create new listItem using userInput 
                 previousSearches(userInput);
             }
@@ -64,16 +68,19 @@ let weatherForecast = function() {
 ///////////////////////////////////
 
 // Five Day Forecast
-// let fiveDay = function() {
-//     fetch (`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon={lon}&appid={API key}`)
-// };
+let fiveDay = function(userInput) {
+    // collect the lat and lon of searched location. search parameter will be userInput 
+    let searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=${appID}`
 
-console.log(`http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${appID}`)
-// collect the lat and lon of searched location. search parameter will be userInput 
+    console.log(searchInput);
 
-// using the fiveDay forecast, plug the lat and lon collected into 5Day link
+    // using the fiveDay forecast, plug the lat and lon collected into 5Day link
 
-// Dynamically create HTML for data within returned JSON
+    // fetch (`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon={lon}&appid={API key}`)
+    
+    // Dynamically create HTML for data within returned JSON
+};
+
 
 ///////////////////////////////////
 
