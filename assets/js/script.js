@@ -69,15 +69,20 @@ let weatherForecast = function() {
 
 // Five Day Forecast
 let fiveDay = function(userInput) {
-    // collect the lat and lon of searched location. search parameter will be userInput 
-    let searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=${appID}`
+    
+    // collect the lat and lon of searched location.
+    const encodedInput = encodeURIComponent(userInput);
 
-    console.log(searchInput);
+    let searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
+
+    // view searchInput's JSON response
+    // console.log(searchInput);
 
     // using the fiveDay forecast, plug the lat and lon collected into 5Day link
-
-    // fetch (`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon={lon}&appid={API key}`)
+    // let test = fetch (`api.openweathermap.org/data/2.5/forecast?lat=${searchInput.lat}&lon=${searchInput.lon}&appid={API key}`)
     
+    // console.log(test);
+
     // Dynamically create HTML for data within returned JSON
 };
 
