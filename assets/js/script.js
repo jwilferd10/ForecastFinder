@@ -73,16 +73,37 @@ let fiveDay = function(userInput) {
     // collect the lat and lon of searched location.
     const encodedInput = encodeURIComponent(userInput);
 
-    let searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
+    const searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
 
     // view searchInput's JSON response
-    // console.log(searchInput);
+    console.log(searchInput);
 
+    // API request
+    fetch(searchInput)
+        .then(response => response.json()) // parsing JSON response
+        .then (weatherData => {
+            const lat = weatherData[0].lat;
+            const lon = weatherData[0].lon;
+            console.log (lat, lon);
+        })
+        .catch(error => {
+            console.error('Error fetching API Data:', error)
+        });
+        
     // using the fiveDay forecast, plug the lat and lon collected into 5Day link
-    // let test = fetch (`api.openweathermap.org/data/2.5/forecast?lat=${searchInput.lat}&lon=${searchInput.lon}&appid={API key}`)
-    
-    // console.log(test);
+    // const test = fetch (`api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appID}`);
 
+    // test
+    //     .then(response => {
+    //         return response.json();
+    //     })
+    //     .then (data => {
+    //         console.log("Data Received:", data);
+    //     })
+    //     .catch(error => {
+    //         console.log("Error fetching data:", error);
+    //     });
+    
     // Dynamically create HTML for data within returned JSON
 };
 
