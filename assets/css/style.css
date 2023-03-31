@@ -14,6 +14,10 @@ body {
     background-color: var(--primary-color);
 }
 
+.hidden {
+    display: none;
+}
+
 .container-fluid {
     column-gap: 15px;
 }

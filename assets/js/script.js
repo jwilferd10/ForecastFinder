@@ -69,7 +69,7 @@ let weatherForecast = function() {
     
 ///////////////////////////////////
 
-// Five Day Forecast
+// geocode userInput 
 let geocodeLocation = function(userInput) {
     
     // collect the lat and lon of searched location.
@@ -89,6 +89,7 @@ let geocodeLocation = function(userInput) {
 
 ///////////////////////////////////
 
+// fiveDay forecast
 let fiveDay = function(userInput) {
 
     geocodeLocation(userInput) 
@@ -163,6 +164,9 @@ let clearHistory = function() {
 
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
+    // remove hidden 
+    document.getElementById('weatherDetails').classList.remove('hidden');
+
     // Referencing the imported ID's above, applying innerHTML that acts as the returned results
     let weatherData = resultFromServer.weather[0].description;
 
