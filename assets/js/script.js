@@ -3,7 +3,6 @@ const appID = '98c449ac6da7543bd710d0a40481466f';
 ///////////////////////////////////
 
 const units = 'imperial';
-const searchMethod = '';
 const currentConditionEl = document.getElementById('currentCondition');
 const currentTempEl = document.getElementById('currentTemp');
 const humidityEl = document.getElementById('humidity');
@@ -29,7 +28,6 @@ let weatherForecast = function() {
 
     // if userInput is true, proceed to API
     if (userInput) {
-        // fetch(`https://api.openweathermap.org/data/2.5/weather?q${searchMethod}=${userInput}&APPID=${appID}&units=${units}`)
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&APPID=${appID}&units=${units}`)
 
         .then(result => {
