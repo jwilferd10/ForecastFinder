@@ -96,9 +96,9 @@ let fiveDay = function(userInput) {
             const lon = weatherData[0].lon;
             // console.log (lat, lon);
 
-            const test = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appID}`;
+            const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appID}`;
 
-            fetch(test)
+            fetch(fiveForecast)
             .then(response => {
                 return response.json();
             })
