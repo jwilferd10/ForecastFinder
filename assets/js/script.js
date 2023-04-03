@@ -121,6 +121,7 @@ const fiveDay = function(userInput) {
                 console.log("Error fetching data:", error);
             });
         })
+    // use data to generate HTML
 }
 
 ///////////////////////////////////
@@ -172,6 +173,16 @@ let clearHistory = function() {
 
 ///////////////////////////////////
 
+// generate fiveDay html
+    // collect the date
+
+    // collect the temp
+
+    // collect the humidity
+
+    // collect the wind speed
+
+///////////////////////////////////
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
     // remove hidden 
