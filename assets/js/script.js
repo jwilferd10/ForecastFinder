@@ -13,6 +13,7 @@ const locationResultEl = document.getElementById('locationResult');
 
 ///////////////////////////////////
 
+const searchInputEl = document.getElementById('searchInput');
 let notifyUserEl = document.getElementById('notifyUser');
 
 let previousSearchID = 0;
@@ -24,7 +25,7 @@ const searches = [];
 // collect weather data 
 let weatherForecast = function() {
 
-    let userInput = document.getElementById('searchInput').value;
+    let userInput = searchInputEl.value;
 
     // if userInput is true, proceed to API
     if (userInput) {
@@ -68,36 +69,47 @@ let weatherForecast = function() {
 ///////////////////////////////////
 
 // geocode userInput 
-let geocodeLocation = function(userInput) {
+const geocodeLocation = function(userInput) {
     
-    // collect the lat and lon of searched location.
+    // encode userInput for the URL search
     const encodedInput = encodeURIComponent(userInput);
 
-    const searchInput = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
+    const encodedSearch = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
 
     // view searchInput's JSON response
     // console.log(searchInput);
 
-    return fetch(searchInput)
-        .then(response => response.json()) // parsing JSON response
+    // fetch from geoCode API 
+    return fetch(encodedSearch)
+        .then(response => {
+            if(!response.ok) {
+                // if something isn't working
+                throw new Error('Something went wrong fetching location data!');
+            }
+            // parsing JSON response
+            return response.json() 
+        })
         .catch(error => {
             console.error('Error fetching API Data:', error);
-        })
+        });
 };
 
 ///////////////////////////////////
 
 // fiveDay forecast
-let fiveDay = function(userInput) {
+const fiveDay = function(userInput) {
 
+    // whenever user searches, run geocodeLocation to encode input
     geocodeLocation(userInput) 
         .then (weatherData => {
+            // collect the lat and lon from geoCodeAPI
             const lat = weatherData[0].lat;
             const lon = weatherData[0].lon;
-            // console.log (lat, lon);
 
+            // search for the desired city 
             const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appID}`;
 
+            // return JSON response and log it, otherwise state error
             fetch(fiveForecast)
             .then(response => {
                 return response.json();
@@ -191,12 +203,6 @@ let findWeather = function(resultFromServer) {
 };
 
 ///////////////////////////////////
-    
-// Create a separate function for the five-day forecast
-
-    // Collect data from the API
-
-///////////////////////////////////
 
 // Commented out for now, will need to add more soon.
 
@@ -249,7 +255,7 @@ let previousSearches = function(userInput) {
 
 document.getElementById('searchButton').addEventListener('click', handleSearch);
 
-document.getElementById('searchInput').addEventListener('keydown', (event) => { 
+searchInputEl.addEventListener('keydown', (event) => { 
     if(event.code === "Enter") {
         handleSearch(event);
     }
