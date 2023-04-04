@@ -14,6 +14,7 @@ const locationResultEl = document.getElementById('locationResult');
 ///////////////////////////////////
 
 const searchInputEl = document.getElementById('searchInput');
+const fiveDayBodyEl = document.getElementById('fiveDayBody');
 let notifyUserEl = document.getElementById('notifyUser');
 
 let previousSearchID = 0;
@@ -115,13 +116,64 @@ const fiveDay = function(userInput) {
                 return response.json();
             })
             .then(data => {
-                console.log("Data Received:", data);
+                // console.log("Data Received:", data);
+                
+                for (let i = 1; i < 6; i++) {
+                    // const element = array[i];
+                    
+                    let list = data.list[i];
+
+                    // div wrapper for content
+                    let fiveStyleDiv = document.createElement('div');
+                    fiveStyleDiv.classList.add('fiveDayStyle', 'border', 'card', 'text-white', 'cardColor', 'mb-3');
+            
+                    // card header 
+                    let fiveHeaderEl = document.createElement('div');
+                    fiveHeaderEl.classList.add('card-header');
+                    
+                    // convert unix to miliseconds and create new Date object and increment date
+                    let dateFormat = new Date(list.dt * 1000);
+                    let date = new Date(dateFormat.setDate(dateFormat.getDate() + i));
+                    let dateString = date.toLocaleDateString();
+                    
+                    // Add the date 
+                    fiveHeaderEl.textContent = dateString;
+            
+                    // card body
+                    let fiveBodyEl = document.createElement('div');
+                    fiveBodyEl.classList.add('card-body');
+            
+                    // card body content 
+                    
+                    // temp
+                    let fiveTempEl = document.createElement('p');
+                    fiveTempEl.classList.add('card-text', 'fiveBody');
+                    fiveTempEl.textContent = "Temp: " + Math.floor(list.main.temp) + '°F'; // Add The Temp
+            
+                    // humidity
+                    let fiveHumidEl = document.createElement('p');
+                    fiveHumidEl.classList.add('card-text', 'fiveBody');
+                    fiveHumidEl.textContent = "Humidity: " + list.main.humidity + "%" // Add the humidity 
+            
+                    // wind 
+                    let fiveWindEl = document.createElement('p');
+                    fiveWindEl.classList.add('card-text', 'fiveBody');
+                    fiveWindEl.textContent = "Wind: " + list.wind.speed; // add wind speeds 
+            
+                    // append temp, humidity, wind to fiveBodyEl
+                    fiveBodyEl.append(fiveTempEl, fiveHumidEl, fiveWindEl);
+            
+                    // append card header & body to fiveStyleDiv
+                    fiveStyleDiv.append(fiveHeaderEl, fiveBodyEl);     
+                    
+                    //
+                    fiveDayBody.append(fiveStyleDiv);
+                }
             })
             .catch(error => {
                 console.log("Error fetching data:", error);
             });
         })
-    // use data to generate HTML
 }
 
 ///////////////////////////////////
@@ -179,17 +231,6 @@ let clearHistory = function() {
     // then re-search for that city
 
     // if city is already in previous search, do not add
-
-///////////////////////////////////
-
-// generate fiveDay html
-    // collect the date
-
-    // collect the temp
-
-    // collect the humidity
-
-    // collect the wind speed
 
 ///////////////////////////////////
 // Create a function that'll initialize the application and return the user input to the HTML

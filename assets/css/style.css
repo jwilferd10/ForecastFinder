@@ -72,4 +72,8 @@ body {
     width: 10rem; 
 }
 
+.fiveBody {
+    margin-bottom: 0.5rem;
+}
+
 /* Add Keyframes for a flashing animation on text */
