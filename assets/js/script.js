@@ -141,9 +141,18 @@ let hideElement = function() {
 // function runs when both formEntry means are engaged
 let handleSearch = function(event) {
     event.preventDefault();
-    weatherForecast();
+    
+    // if searchInputEl is empty, remind user to type something
+    if(searchInputEl.value === "") {
+        window.alert("Fill out the searchbar!")
+    } else {
 
-    document.getElementById('formID').reset();
+        // invoke weatherForecast
+        weatherForecast();
+
+        // reset form
+        document.getElementById('formID').reset();
+    }
 };
 
 ///////////////////////////////////
