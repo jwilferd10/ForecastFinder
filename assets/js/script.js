@@ -100,6 +100,9 @@ const geocodeLocation = function(userInput) {
 // fiveDay forecast
 const fiveDay = function(userInput) {
 
+    // clear existing content when called
+    fiveDayBodyEl.innerHTML = '';
+
     // whenever user searches, run geocodeLocation to encode input
     geocodeLocation(userInput) 
         .then (weatherData => {
@@ -108,7 +111,7 @@ const fiveDay = function(userInput) {
             const lon = weatherData[0].lon;
 
             // search for the desired city 
-            const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${appID}`;
+            const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
 
             // return JSON response and log it, otherwise state error
             fetch(fiveForecast)
@@ -145,6 +148,12 @@ const fiveDay = function(userInput) {
             
                     // card body content 
                     
+                    // weather img
+                    let fiveDayImg = document.createElement('img');
+                    fiveDayImg.id = "fiveWeatherPNG";
+                    fiveDayImg.src = `http://openweathermap.org/img/w/${list.weather[0].icon}.png`;
+                    fiveDayImg.classList.add('fiveBody');
+
                     // temp
                     let fiveTempEl = document.createElement('p');
                     fiveTempEl.classList.add('card-text', 'fiveBody');
@@ -153,15 +162,15 @@ const fiveDay = function(userInput) {
                     // humidity
                     let fiveHumidEl = document.createElement('p');
                     fiveHumidEl.classList.add('card-text', 'fiveBody');
-                    fiveHumidEl.textContent = "Humidity: " + list.main.humidity + "%" // Add the humidity 
+                    fiveHumidEl.textContent = "Humidity: " + list.main.humidity + "%"; // Add the humidity 
             
                     // wind 
                     let fiveWindEl = document.createElement('p');
                     fiveWindEl.classList.add('card-text', 'fiveBody');
-                    fiveWindEl.textContent = "Wind: " + list.wind.speed; // add wind speeds 
+                    fiveWindEl.textContent = "Wind: " + Math.floor(list.wind.speed) + " MPH"; // add wind speeds 
             
                     // append temp, humidity, wind to fiveBodyEl
-                    fiveBodyEl.append(fiveTempEl, fiveHumidEl, fiveWindEl);
+                    fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
             
                     // append card header & body to fiveStyleDiv
                     fiveStyleDiv.append(fiveHeaderEl, fiveBodyEl);     

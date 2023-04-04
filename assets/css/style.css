@@ -47,6 +47,10 @@ body {
     background-color: #363636;
 }
 
+.card-body {
+    text-align: center;
+}
+
 #weatherDetails {
     margin-top: 20px;
     border-radius: 35px;
@@ -64,7 +68,6 @@ body {
 
 .fiveContainer {
     column-gap: 20px;
-    height: 11.5rem;
     margin-left: 27%;
 }
 
@@ -75,5 +78,3 @@ body {
 .fiveBody {
     margin-bottom: 0.5rem;
 }
-
-/* Add Keyframes for a flashing animation on text */
