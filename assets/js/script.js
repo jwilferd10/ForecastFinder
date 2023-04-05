@@ -18,7 +18,7 @@ const fiveDayBodyEl = document.getElementById('fiveDayBody');
 let notifyUserEl = document.getElementById('notifyUser');
 
 let previousSearchID = 0;
-const searches = [];
+const searchArr = [];
 
 
 ///////////////////////////////////
@@ -27,6 +27,10 @@ const searches = [];
 let weatherForecast = function() {
 
     let userInput = searchInputEl.value;
+
+    // let cityObj = {
+    //     text: userInput
+    // };
 
     // if userInput is true, proceed to API
     if (userInput) {
@@ -234,14 +238,6 @@ let clearHistory = function() {
 };
 
 ///////////////////////////////////
-
-// previousSearch is clicked
-
-    // then re-search for that city
-
-    // if city is already in previous search, do not add
-
-///////////////////////////////////
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
     // remove hidden 
@@ -288,7 +284,14 @@ let findWeather = function(resultFromServer) {
 
 // Create HTML elements to store the data and display to front-end
 let previousSearches = function(userInput) {
-    // collect userData from formEntry 
+    // let userInput = searchInputEl.value;
+
+    // create previousCity object
+    let cityObj = {
+        text: userInput
+    };
+
+    // cityObj.id = previousSearchID;
 
     // Create a <p> or <span> element containing the userData
     let listWrapperEl = document.createElement('li');
@@ -299,9 +302,10 @@ let previousSearches = function(userInput) {
     // class for locationWrapperEl
     locationWrapperEl.classList.add("listItem");
     locationWrapperEl.classList.add("card");
+    // locationWrapperEl.setAttribute("id " + previousSearchID);
 
     // append to <li> element
-    let locationTextEl = document.createTextNode(userInput);
+    let locationTextEl = document.createTextNode(cityObj.text);
 
     // append to wrapperEl 
     locationWrapperEl.appendChild(locationTextEl);
@@ -310,7 +314,24 @@ let previousSearches = function(userInput) {
 
     // append to previousSearches list on HTML
     locationResultEl.appendChild(listWrapperEl);
+
+    // searchArr.push(cityObj);
+
+    // previousSearchID++;
+
+    // document.getElementById('searchListID').addEventListener('click', prevCitySearch);
 }
+
+///////////////////////////////////
+
+// previousCity is clicked
+// let prevCitySearch = function() {
+
+//     console.log(searchListID.value);
+//     // then re-search for that city
+
+//     // if city is already in previous search, do not add
+// }
 
 ///////////////////////////////////
 
@@ -332,3 +353,5 @@ searchInputEl.addEventListener('keydown', (event) => {
 });
 
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
+
+// document.getElementById('searchListID').addEventListener('click', previousCity);
