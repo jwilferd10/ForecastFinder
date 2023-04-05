@@ -284,17 +284,16 @@ let findWeather = function(resultFromServer) {
 
 // Create HTML elements to store the data and display to front-end
 let previousSearches = function(userInput) {
-    // let userInput = searchInputEl.value;
 
-    // create previousCity object
+    // cityObj
     let cityObj = {
-        text: userInput
+        text: userInput,
+        id: previousSearchID
     };
-
-    // cityObj.id = previousSearchID;
 
     // Create a <p> or <span> element containing the userData
     let listWrapperEl = document.createElement('li');
+    listWrapperEl.id = "cityID " + previousSearchID;
 
     // wrapper and clickable element for textEl
     locationWrapperEl = document.createElement('span');
@@ -302,7 +301,6 @@ let previousSearches = function(userInput) {
     // class for locationWrapperEl
     locationWrapperEl.classList.add("listItem");
     locationWrapperEl.classList.add("card");
-    // locationWrapperEl.setAttribute("id " + previousSearchID);
 
     // append to <li> element
     let locationTextEl = document.createTextNode(cityObj.text);
@@ -314,10 +312,13 @@ let previousSearches = function(userInput) {
 
     // append to previousSearches list on HTML
     locationResultEl.appendChild(listWrapperEl);
+    
+    searchArr.push(cityObj);
 
-    // searchArr.push(cityObj);
+    previousSearchID++;
 
-    // previousSearchID++;
+    // check array
+    // console.log(searchArr);
 
     // document.getElementById('searchListID').addEventListener('click', prevCitySearch);
 }
