@@ -119,8 +119,7 @@ const fiveDay = function(userInput) {
                 return response.json();
             })
             .then(data => {
-                // console.log("Data Received:", data);
-                
+
                 for (let i = 1; i < 6; i++) {
                     
                     let list = data.list[i];
@@ -267,20 +266,16 @@ let findWeather = function(resultFromServer) {
 
 ///////////////////////////////////
 
-// Commented out for now, will need to add more soon.
-
-// let checkForRepeat = function(userInput) {
-//     if (userInput.value === userInput.value) {
-//         return;
-//     } else {
-//         previousSearches(userInput);
-//     }
-// }
-
-///////////////////////////////////
-
 // Create HTML elements to store the data and display to front-end
 let previousSearches = function(userInput) {
+
+    // using some() method, see if userInput already exists within array
+    let cityExists = searchArr.some(city => city.text === userInput);
+
+    // if true, return with no addition to list
+    if (cityExists) {
+        return; 
+    }
 
     // cityObj
     let cityObj = {
@@ -334,15 +329,12 @@ let previousSearches = function(userInput) {
 
 // Event Listeners
 
-
 document.getElementById('searchButton').addEventListener('click', handleSearch);
 
 searchInputEl.addEventListener('keydown', (event) => { 
-    if(event.code === "Enter") {
+if(event.code === "Enter") {
         handleSearch(event);
     }
 });
 
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
-
-// document.getElementById('listWrapperEl').onclick = function() {prevCitySearch()};
