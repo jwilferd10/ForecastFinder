@@ -297,8 +297,6 @@ let previousSearches = function(userInput) {
 
     // wrapper and clickable element for textEl
     locationWrapperEl = document.createElement('span');
-
-    // class for locationWrapperEl
     locationWrapperEl.classList.add("listItem");
     locationWrapperEl.classList.add("card");
 
@@ -318,21 +316,23 @@ let previousSearches = function(userInput) {
     previousSearchID++;
 
     // check array
-    // console.log(searchArr);
+    // console.log(searchArr)
 
-    // document.getElementById('searchListID').addEventListener('click', prevCitySearch);
+    let test = document.getElementById(`cityID ${cityObj.id}`);
+
+    test.addEventListener('click', function() {
+        console.log(test);
+    })
 }
 
 ///////////////////////////////////
 
 // previousCity is clicked
-// let prevCitySearch = function() {
-
-//     console.log(searchListID.value);
-//     // then re-search for that city
-
-//     // if city is already in previous search, do not add
+// let previousCity = function(cityObj) {
+//     console.log(cityObj);
 // }
+
+
 
 ///////////////////////////////////
 
@@ -355,4 +355,4 @@ searchInputEl.addEventListener('keydown', (event) => {
 
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
 
-// document.getElementById('searchListID').addEventListener('click', previousCity);
+// document.getElementById('listWrapperEl').onclick = function() {prevCitySearch()};
