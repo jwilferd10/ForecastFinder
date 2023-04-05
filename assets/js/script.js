@@ -24,13 +24,9 @@ const searchArr = [];
 ///////////////////////////////////
 
 // collect weather data 
-let weatherForecast = function() {
+let weatherForecast = function(searchInput, prevCity) {
 
-    let userInput = searchInputEl.value;
-
-    // let cityObj = {
-    //     text: userInput
-    // };
+    userInput = searchInput || prevCity;
 
     // if userInput is true, proceed to API
     if (userInput) {
@@ -68,7 +64,7 @@ let weatherForecast = function() {
             notifyUserEl.style.color = 'var(--red)';
             showElement();
         });
-    } 
+    }
 };
     
 ///////////////////////////////////
@@ -126,7 +122,6 @@ const fiveDay = function(userInput) {
                 // console.log("Data Received:", data);
                 
                 for (let i = 1; i < 6; i++) {
-                    // const element = array[i];
                     
                     let list = data.list[i];
 
@@ -212,8 +207,10 @@ let handleSearch = function(event) {
         window.alert("Fill out the searchbar!")
     } else {
 
+        let searchInput = searchInputEl.value;
+
         // invoke weatherForecast
-        weatherForecast();
+        weatherForecast(searchInput);
 
         // reset form
         document.getElementById('formID').reset();
@@ -321,18 +318,11 @@ let previousSearches = function(userInput) {
     let test = document.getElementById(`cityID ${cityObj.id}`);
 
     test.addEventListener('click', function() {
-        console.log(test);
+        let prevCity = cityObj.text;
+        console.log(prevCity);
+        weatherForecast(prevCity);
     })
 }
-
-///////////////////////////////////
-
-// previousCity is clicked
-// let previousCity = function(cityObj) {
-//     console.log(cityObj);
-// }
-
-
 
 ///////////////////////////////////
 
