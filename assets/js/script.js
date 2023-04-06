@@ -310,9 +310,9 @@ let previousSearches = function(userInput) {
     // check array
     // console.log(searchArr)
 
-    let test = document.getElementById(`cityID ${cityObj.id}`);
+    let prevCitySpan = document.getElementById(`cityID ${cityObj.id}`);
 
-    test.addEventListener('click', function() {
+    prevCitySpan.addEventListener('click', function() {
         let prevCity = cityObj.text;
         console.log(prevCity);
         weatherForecast(prevCity);
