@@ -1,7 +1,7 @@
+// Fetch API key for weather data
 const appID = '98c449ac6da7543bd710d0a40481466f';
 
-///////////////////////////////////
-
+// DOM element references for current weather data display 
 const units = 'imperial';
 const currentConditionEl = document.getElementById('currentCondition');
 const currentTempEl = document.getElementById('currentTemp');
@@ -11,17 +11,14 @@ const cityNameEl = document.getElementById('cityName');
 const currentWeatherPNG = document.getElementById('currentWeatherPNG');
 const locationResultEl = document.getElementById('locationResult');
 
-///////////////////////////////////
-
+// DOM Element references for search functionality 
 const searchInputEl = document.getElementById('searchInput');
 const fiveDayBodyEl = document.getElementById('fiveDayBody');
 let notifyUserEl = document.getElementById('notifyUser');
 
+// Variables tracking search history 
 let previousSearchID = 0;
 const searchArr = [];
-
-
-///////////////////////////////////
 
 // collect weather data 
 let weatherForecast = function(searchInput, prevCity) {
@@ -37,7 +34,7 @@ let weatherForecast = function(searchInput, prevCity) {
         })
         .then(result => {
             if (result.error) {
-                window.alert("Something went wrong!");
+                window.alert('Something went wrong!');
             } else {
 
                 // user notification
@@ -57,7 +54,7 @@ let weatherForecast = function(searchInput, prevCity) {
         })
         .catch(error => {
             // if error exists, inform user
-            window.alert("Please enter a valid city name!");
+            window.alert('Please enter a valid city name!');
 
             // user notification
             notifyUserEl.textContent = 'Something went wrong!';
@@ -67,59 +64,53 @@ let weatherForecast = function(searchInput, prevCity) {
     }
 };
     
-///////////////////////////////////
-
-// geocode userInput 
+// Fetch location data from geocode API 
 const geocodeLocation = function(userInput) {
     
-    // encode userInput for the URL search
+    // Encode userInput for the URL search
     const encodedInput = encodeURIComponent(userInput);
 
-    const encodedSearch = `http://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
-
-    // view searchInput's JSON response
-    // console.log(searchInput);
+    // Construct URL for geocode API search
+    const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
 
     // fetch from geoCode API 
     return fetch(encodedSearch)
         .then(response => {
             if(!response.ok) {
-                // if something isn't working
+                // Throw error if location data fetch fails
                 throw new Error('Something went wrong fetching location data!');
             }
             // parsing JSON response
             return response.json() 
         })
         .catch(error => {
+            // Log an error if there's an issue with fetching API data 
             console.error('Error fetching API Data:', error);
         });
 };
 
-///////////////////////////////////
-
-// fiveDay forecast
+// Function to fetch and display 5-Day weather forecast for a given location
 const fiveDay = function(userInput) {
 
     // clear existing content when called
     fiveDayBodyEl.innerHTML = '';
 
-    // whenever user searches, run geocodeLocation to encode input
+    // Fetch latitude and longitude from geocodeLocation API
     geocodeLocation(userInput) 
         .then (weatherData => {
-            // collect the lat and lon from geoCodeAPI
             const lat = weatherData[0].lat;
             const lon = weatherData[0].lon;
 
-            // search for the desired city 
+            // Construct URL for 5-Day forecast API with lat, lon, units, and appID
             const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
 
-            // return JSON response and log it, otherwise state error
+            // Fetch data from 5-Day forecast API
             fetch(fiveForecast)
             .then(response => {
                 return response.json();
             })
             .then(data => {
-
+                // Loop through the fetched data and create forecast cards
                 for (let i = 1; i < 6; i++) {
                     
                     let list = data.list[i];
@@ -143,47 +134,43 @@ const fiveDay = function(userInput) {
                     // card body
                     let fiveBodyEl = document.createElement('div');
                     fiveBodyEl.classList.add('card-body');
-            
-                    // card body content 
-                    
+                     
                     // weather img
                     let fiveDayImg = document.createElement('img');
-                    fiveDayImg.id = "fiveWeatherPNG";
+                    fiveDayImg.id = 'fiveWeatherPNG';
                     fiveDayImg.src = `http://openweathermap.org/img/w/${list.weather[0].icon}.png`;
                     fiveDayImg.classList.add('fiveBody');
 
                     // temp
                     let fiveTempEl = document.createElement('p');
                     fiveTempEl.classList.add('card-text', 'fiveBody');
-                    fiveTempEl.textContent = "Temp: " + Math.floor(list.main.temp) + '°F'; // Add The Temp
+                    fiveTempEl.textContent = 'Temp: ' + Math.floor(list.main.temp) + '°F';
             
                     // humidity
                     let fiveHumidEl = document.createElement('p');
                     fiveHumidEl.classList.add('card-text', 'fiveBody');
-                    fiveHumidEl.textContent = "Humidity: " + list.main.humidity + "%"; // Add the humidity 
+                    fiveHumidEl.textContent = 'Humidity: ' + list.main.humidity + '%'; 
             
                     // wind 
                     let fiveWindEl = document.createElement('p');
                     fiveWindEl.classList.add('card-text', 'fiveBody');
-                    fiveWindEl.textContent = "Wind: " + Math.floor(list.wind.speed) + " MPH"; // add wind speeds 
+                    fiveWindEl.textContent = 'Wind: ' + Math.floor(list.wind.speed) + ' MPH';
             
-                    // append temp, humidity, wind to fiveBodyEl
+                    // Append temp, humidity, wind to fiveBodyEl
                     fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
             
-                    // append card header & body to fiveStyleDiv
+                    // Append card header & body to fiveStyleDiv
                     fiveStyleDiv.append(fiveHeaderEl, fiveBodyEl);     
                     
-                    //
+                    // Append fiveStyleDiv to fiveDayBody
                     fiveDayBody.append(fiveStyleDiv);
                 }
             })
             .catch(error => {
-                console.log("Error fetching data:", error);
+                console.log('Error fetching data:', error);
             });
         })
 }
-
-///////////////////////////////////
 
 // Notification visibility functions 
 let showElement = function() {
@@ -195,15 +182,13 @@ let hideElement = function() {
     notifyUserEl.style.display='none';
 };
 
-///////////////////////////////////
-
 // function runs when both formEntry means are engaged
 let handleSearch = function(event) {
     event.preventDefault();
     
     // if searchInputEl is empty, remind user to type something
-    if(searchInputEl.value === "") {
-        window.alert("Fill out the searchbar!")
+    if(searchInputEl.value === '') {
+        window.alert('Fill out the searchbar!')
     } else {
 
         let searchInput = searchInputEl.value;
@@ -216,15 +201,14 @@ let handleSearch = function(event) {
     }
 };
 
-///////////////////////////////////
 
 let clearHistory = function() {
 
-    let checkWithUser = window.confirm("Confirm that you want to clear this list");
+    let checkWithUser = window.confirm('Confirm that you want to clear this list');
 
     if (checkWithUser) {
         // set the list back to an empty state
-        locationResultEl.innerHTML = ("");
+        locationResultEl.innerHTML = ('');
 
         // user notification
         notifyUserEl.textContent = 'Search history deleted!';
@@ -233,7 +217,6 @@ let clearHistory = function() {
     }    
 };
 
-///////////////////////////////////
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
     // remove hidden 
@@ -264,8 +247,6 @@ let findWeather = function(resultFromServer) {
     console.log(resultFromServer);
 };
 
-///////////////////////////////////
-
 // Create HTML elements to store the data and display to front-end
 let previousSearches = function(userInput) {
 
@@ -277,64 +258,56 @@ let previousSearches = function(userInput) {
         return; 
     }
 
-    // cityObj
+    // Object that collects text and id, to be stored in searchArr
     let cityObj = {
         text: userInput,
         id: previousSearchID
     };
 
-    // Create a <p> or <span> element containing the userData
+    // Create <li> element to hold search results
     let listWrapperEl = document.createElement('li');
-    listWrapperEl.id = "cityID " + previousSearchID;
+    listWrapperEl.id = 'cityID ' + previousSearchID;
 
-    // wrapper and clickable element for textEl
-    locationWrapperEl = document.createElement('span');
-    locationWrapperEl.classList.add("listItem");
-    locationWrapperEl.classList.add("card");
+    // Create <span> element to display search result
+    let locationWrapperEl = document.createElement('span');
+    locationWrapperEl.classList.add('listItem', 'card');
 
-    // append to <li> element
+    // Create text node with search result text 
     let locationTextEl = document.createTextNode(cityObj.text);
 
-    // append to wrapperEl 
+    // Append text node to <span> element
     locationWrapperEl.appendChild(locationTextEl);
 
+    // Append <span> element to <li> element 
     listWrapperEl.appendChild(locationWrapperEl);
 
-    // append to previousSearches list on HTML
+    // Append <li> element to the previousSearches list on HTML
     locationResultEl.appendChild(listWrapperEl);
     
+    // Add the cityObj to the searchArr
     searchArr.push(cityObj);
 
+    // Increment previousSearchID for next search
     previousSearchID++;
-
-    // check array
-    // console.log(searchArr)
 
     let prevCitySpan = document.getElementById(`cityID ${cityObj.id}`);
 
+    // Add click event listener to search result element
     prevCitySpan.addEventListener('click', function() {
         let prevCity = cityObj.text;
-        console.log(prevCity);
         weatherForecast(prevCity);
-    })
+    });
 }
-
-///////////////////////////////////
 
 // SETUP: Setup LocalStorage and save the previously searched location
 
     // the results from findWeather and fiveDay will be recalled when previously searched location is selected 
 
-///////////////////////////////////
-
 // Event Listeners
-
 document.getElementById('searchButton').addEventListener('click', handleSearch);
-
 searchInputEl.addEventListener('keydown', (event) => { 
-if(event.code === "Enter") {
+if(event.code === 'Enter') {
         handleSearch(event);
     }
 });
-
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
