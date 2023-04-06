@@ -6,6 +6,22 @@
     --tertiary-color: null; */
 }
 
+#finderText {
+    background-image: linear-gradient(to right, rgb(137, 62, 167), rgb(15, 15, 228));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.borderStyle {
+    border-bottom: 3.5px solid;
+    width: 16rem;
+    margin: auto;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to right, white, rgba(255, 255, 255, 0.699), rgba(137, 62, 167, 0.466), rgb(15, 15, 228));
+}
+
 .cardColor {
     background-color: #202020;
 }
