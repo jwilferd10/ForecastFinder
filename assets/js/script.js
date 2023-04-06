@@ -36,7 +36,6 @@ let weatherForecast = function(searchInput, prevCity) {
             if (result.error) {
                 window.alert('Something went wrong!');
             } else {
-
                 // user notification
                 notifyUserEl.textContent = 'Search Successful!';
                 notifyUserEl.style.color = 'var(--success)';
@@ -182,7 +181,7 @@ let hideElement = function() {
     notifyUserEl.style.display='none';
 };
 
-// function runs when both formEntry means are engaged
+// Function runs when both formEntry means are engaged
 let handleSearch = function(event) {
     event.preventDefault();
     
@@ -201,7 +200,7 @@ let handleSearch = function(event) {
     }
 };
 
-
+// Function clears 'Previous Searches' when 'clearBtn' is clicked 
 let clearHistory = function() {
 
     let checkWithUser = window.confirm('Confirm that you want to clear this list');
