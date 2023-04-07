@@ -10,21 +10,22 @@
     <body>
     
         <!-- Header -->
-        <header class="pb-2 mb-3 mt-3 borderStyle">
-            <h1 class="text-light text-center">Forecast<span id="finderText">Finder</span></h1>
+        <header class="pb-2 mb-3 mt-3 ">
+            <h1 class="text-light text-center borderStyle">Forecast<span id="finderText">Finder</span></h1>
+            <h3 class="text-light text-center pt-3">Your Weather Planning Companion</h3>
         </header>
         
         <main>
             <section class="container-fluid d-flex">
                 <!-- Search Form (Top Left of Page) -->
                 <div class="searchBar col-3 border">
-                    <h3 class="pt-4 text-light">Search For A City:</h3>
+                    <h3 class="pt-4 pb-1 text-light">Search For A City</h3>
                     <form id="formID">
                         <input id="searchInput" class="mb-2 form-control" type="userInput" placeholder="Ex: San Antonio">
-                        <div class="pb-2">
-                            <p id="notifyUser"></p>
-                            <button type="button" class="btn btn-primary" id="searchButton"> Search </button>
-                            <button type="button" class="btn btn-danger" id="clearBtn"> Clear History </button>
+                        <p id="notifyUser" class="text-center"></p>
+                        <div class="pb-2 btn-group btn-lg btn-block formBtns">
+                            <button type="button" class="btn btn-primary mr-2" id="searchButton"> Search </button>
+                            <button type="button" class="btn btn-danger ml-2" id="clearBtn"> Clear History </button>
                         </div>
                     </form>
                     <!-- Previous Searches -->
@@ -38,7 +39,7 @@
                 <!-- Weather Display Container (Right side of screen) -->
                 <div class="rightContainer col-8 border"> 
                     <!-- Today's Weather Display Wrapper -->
-                    <h2 class="pt-4 text-light">Current Conditions</h2>
+                    <h2 class="pt-4 text-light">Current Forecast</h2>
                     <div id="weatherDetails" class="text-white cardColor card hidden">
                         <div class="card-body">
                             <h1 id="cityName" class="card-title"></h1>

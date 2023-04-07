@@ -7,7 +7,7 @@
 }
 
 #finderText {
-    background-image: linear-gradient(to right, rgb(137, 62, 167), rgb(15, 15, 228));
+    background-image: linear-gradient(to right, rgb(137, 62, 167), rgba(15, 15, 228, 0.868));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -20,6 +20,10 @@
     margin: auto;
     border-image-slice: 1;
     border-image-source: linear-gradient(to right, white, rgba(255, 255, 255, 0.699), rgba(137, 62, 167, 0.466), rgb(15, 15, 228));
+}
+
+.formBtns {
+    margin-right: 10px !important;
 }
 
 .cardColor {
