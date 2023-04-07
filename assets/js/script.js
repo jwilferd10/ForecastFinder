@@ -200,22 +200,6 @@ let handleSearch = function(event) {
     }
 };
 
-// Function clears 'Previous Searches' when 'clearBtn' is clicked 
-let clearHistory = function() {
-
-    let checkWithUser = window.confirm('Confirm that you want to clear this list');
-
-    if (checkWithUser) {
-        // set the list back to an empty state
-        locationResultEl.innerHTML = ('');
-
-        // user notification
-        notifyUserEl.textContent = 'Search history deleted!';
-        notifyUserEl.style.color = 'var(--red)';
-        showElement();
-    }    
-};
-
 // Create a function that'll initialize the application and return the user input to the HTML
 let findWeather = function(resultFromServer) {    
     // remove hidden 
@@ -296,11 +280,53 @@ let previousSearches = function(userInput) {
         let prevCity = cityObj.text;
         weatherForecast(prevCity);
     });
+
+    // save information to localStorage
+    saveCity(cityObj);
 }
 
-// SETUP: Setup LocalStorage and save the previously searched location
+// save content within searchArr to previousSearch and into localStorage
+let saveCity = function() {
+    localStorage.setItem('previousSearch', JSON.stringify(searchArr));
+}
 
-    // the results from findWeather and fiveDay will be recalled when previously searched location is selected 
+// Re-create every HTML element saved to previousSearch
+let loadCityList = function() {
+    let savedData = localStorage.getItem('previousSearch');
+
+    if(!savedData) {
+        return false;
+    } else {
+        console.log('Saved data found');
+        savedData = JSON.parse(savedData);
+        // run previousSearches to recreate every item
+        for (let i = 0; i < savedData.length; i++) {
+            previousSearches(savedData[i].text);
+        }
+    }
+}
+
+// Function clears 'Previous Searches' when 'clearBtn' is clicked 
+let clearHistory = function() {
+    let checkWithUser = window.confirm('Confirm that you want to clear this list');
+
+    if (checkWithUser) {
+        // set the list back to an empty state
+        locationResultEl.innerHTML = ('');
+
+        // clear localStorage
+        localStorage.clear();
+        localStorage.removeItem('previousSearch');
+
+        // clear localStorage array
+        previousSearch = [];
+        
+        // user notification
+        notifyUserEl.textContent = 'Search history deleted!';
+        notifyUserEl.style.color = 'var(--red)';
+        showElement();
+    }    
+};
 
 // Event Listeners
 document.getElementById('searchButton').addEventListener('click', handleSearch);
@@ -310,3 +336,5 @@ if(event.code === 'Enter') {
     }
 });
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
+
+loadCityList();
