@@ -138,7 +138,7 @@ const fiveDay = function(userInput) {
                     let fiveDayImg = document.createElement('img');
                     fiveDayImg.id = 'fiveWeatherPNG';
                     fiveDayImg.src = `http://openweathermap.org/img/w/${list.weather[0].icon}.png`;
-                    fiveDayImg.classList.add('fiveBody');
+                    fiveDayImg.classList.add('fiveBody', 'weatherImgShadow');
 
                     // temp
                     let fiveTempEl = document.createElement('p');
