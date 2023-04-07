@@ -46,6 +46,10 @@ body {
     border-radius: 25px;
 }
 
+#notifyUser{
+    margin-bottom: 0px !important;
+}
+
 #locationResult {
     list-style-type: none !important;
     padding: 0;

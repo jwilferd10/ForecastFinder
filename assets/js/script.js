@@ -119,8 +119,8 @@ const fiveDay = function(userInput) {
                     fiveStyleDiv.classList.add('fiveDayStyle', 'border', 'card', 'text-white', 'cardColor', 'mb-3');
             
                     // card header 
-                    let fiveHeaderEl = document.createElement('div');
-                    fiveHeaderEl.classList.add('card-header');
+                    let fiveHeaderEl = document.createElement('h5');
+                    fiveHeaderEl.classList.add('card-header', 'text-center');
                     
                     // convert unix to miliseconds and create new Date object and increment date
                     let dateFormat = new Date(list.dt * 1000);
