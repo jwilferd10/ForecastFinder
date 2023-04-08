@@ -67,7 +67,7 @@ const weatherForecast = function(searchInput, prevCity) {
 };
     
 // Fetch location data from geocode API 
-const geocodeLocation = function(userInput) {
+const geocodeLocation = userInput => {
     
     // Encode userInput for the URL search
     const encodedInput = encodeURIComponent(userInput);
@@ -91,89 +91,92 @@ const geocodeLocation = function(userInput) {
         });
 };
 
-// Function to fetch and display 5-Day weather forecast for a given location
-const fiveDay = function(userInput) {
+// Function to fetch 5-Day weather forecast for a given location
+const fetchFiveDay = async (userInput) => {
+    try {
+        const weatherData = await geocodeLocation(userInput);
+        const { lat, lon } = weatherData[0]
+        const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
+        const response = await fetch(fiveForecast);
+        const data = await response.json();
+        return data;
 
-    // clear existing content when called
+    } catch (error) {
+        console.log ('Error when fetching weather data:', error)
+        throw error;
+    }
+};
+
+const fiveForecastCards = (data) => {
+    // Clear existing content when called
     fiveDayBodyEl.innerHTML = '';
 
-    // Fetch latitude and longitude from geocodeLocation API
-    geocodeLocation(userInput) 
-        .then (weatherData => {
+    // Loop through the fetched data and create forecast cards
+    for (let i = 1; i < 6; i++) {
+                        
+        // object destructuring to extract specific data 
+        let { dt, main, weather, wind } = data.list[i];
 
-            // Using object destructuring to extract lat and lon from weatherDatae
-            const { lat, lon } = weatherData[0]
+        // div wrapper for content
+        let fiveStyleDiv = document.createElement('div');
+        fiveStyleDiv.classList.add('fiveDayStyle', 'border', 'card', 'text-white', 'cardColor', 'mb-3');
 
-            // Construct URL for 5-Day forecast API with lat, lon, units, and appID
-            const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
+        // card header 
+        let fiveHeaderEl = document.createElement('h5');
+        fiveHeaderEl.classList.add('card-header', 'text-center');
+        
+        // convert unix to miliseconds and create new Date object and increment date
+        let dateFormat = new Date(dt * 1000);
+        let date = new Date(dateFormat.setDate(dateFormat.getDate() + i));
+        let dateString = date.toLocaleDateString();
+        
+        // Add the date 
+        fiveHeaderEl.textContent = dateString;
 
-            // Fetch data from 5-Day forecast API
-            fetch(fiveForecast)
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                // Loop through the fetched data and create forecast cards
-                for (let i = 1; i < 6; i++) {
-                    
-                    let { dt, main, weather, wind } = data.list[i];
+        // card body
+        let fiveBodyEl = document.createElement('div');
+        fiveBodyEl.classList.add('card-body');
+        
+        // weather img
+        let fiveDayImg = document.createElement('img');
+        fiveDayImg.id = 'fiveWeatherPNG';
+        fiveDayImg.src = `http://openweathermap.org/img/w/${weather[0].icon}.png`;
+        fiveDayImg.classList.add('fiveBody', 'weatherImgShadow');
 
-                    // div wrapper for content
-                    let fiveStyleDiv = document.createElement('div');
-                    fiveStyleDiv.classList.add('fiveDayStyle', 'border', 'card', 'text-white', 'cardColor', 'mb-3');
-            
-                    // card header 
-                    let fiveHeaderEl = document.createElement('h5');
-                    fiveHeaderEl.classList.add('card-header', 'text-center');
-                    
-                    // convert unix to miliseconds and create new Date object and increment date
-                    let dateFormat = new Date(dt * 1000);
-                    let date = new Date(dateFormat.setDate(dateFormat.getDate() + i));
-                    let dateString = date.toLocaleDateString();
-                    
-                    // Add the date 
-                    fiveHeaderEl.textContent = dateString;
-            
-                    // card body
-                    let fiveBodyEl = document.createElement('div');
-                    fiveBodyEl.classList.add('card-body');
-                     
-                    // weather img
-                    let fiveDayImg = document.createElement('img');
-                    fiveDayImg.id = 'fiveWeatherPNG';
-                    fiveDayImg.src = `http://openweathermap.org/img/w/${weather[0].icon}.png`;
-                    fiveDayImg.classList.add('fiveBody', 'weatherImgShadow');
+        // temp
+        let fiveTempEl = document.createElement('p');
+        fiveTempEl.classList.add('card-text', 'fiveBody');
+        fiveTempEl.textContent = 'Temp: ' + Math.floor(main.temp) + '°F';
 
-                    // temp
-                    let fiveTempEl = document.createElement('p');
-                    fiveTempEl.classList.add('card-text', 'fiveBody');
-                    fiveTempEl.textContent = 'Temp: ' + Math.floor(main.temp) + '°F';
-            
-                    // humidity
-                    let fiveHumidEl = document.createElement('p');
-                    fiveHumidEl.classList.add('card-text', 'fiveBody');
-                    fiveHumidEl.textContent = 'Humidity: ' + main.humidity + '%'; 
-            
-                    // wind 
-                    let fiveWindEl = document.createElement('p');
-                    fiveWindEl.classList.add('card-text', 'fiveBody');
-                    fiveWindEl.textContent = 'Wind: ' + Math.floor(wind.speed) + ' MPH';
-            
-                    // Append temp, humidity, wind to fiveBodyEl
-                    fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
-            
-                    // Append card header & body to fiveStyleDiv
-                    fiveStyleDiv.append(fiveHeaderEl, fiveBodyEl);     
-                    
-                    // Append fiveStyleDiv to fiveDayBody
-                    fiveDayBody.append(fiveStyleDiv);
-                }
-            })
-            .catch(error => {
-                console.log('Error fetching data:', error);
-            });
-        })
-}
+        // humidity
+        let fiveHumidEl = document.createElement('p');
+        fiveHumidEl.classList.add('card-text', 'fiveBody');
+        fiveHumidEl.textContent = 'Humidity: ' + main.humidity + '%'; 
+
+        // wind 
+        let fiveWindEl = document.createElement('p');
+        fiveWindEl.classList.add('card-text', 'fiveBody');
+        fiveWindEl.textContent = 'Wind: ' + Math.floor(wind.speed) + ' MPH';
+
+        // Append temp, humidity, wind to fiveBodyEl
+        fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
+
+        // Append card header & body to fiveStyleDiv
+        fiveStyleDiv.append(fiveHeaderEl, fiveBodyEl);     
+        
+        // Append fiveStyleDiv to fiveDayBody
+        fiveDayBody.append(fiveStyleDiv);
+    }
+};
+
+const fiveDay = async (userInput) => {
+    try {
+        const data = await fetchFiveDay(userInput);
+        fiveForecastCards(data);
+    } catch (error) {
+        console.log('Error regarding fiveDay', error);
+    }
+};
 
 // Notification visibility functions 
 let showElement = function() {
