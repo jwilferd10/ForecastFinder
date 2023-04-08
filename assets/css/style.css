@@ -81,7 +81,7 @@ body {
 }
 
 .weatherImgShadow {
-    filter: drop-shadow(0.5px 3px 1.5px rgba(110, 139, 162, 0.804));
+    filter: drop-shadow(0.5px 1px 3.5px rgba(110, 139, 162, 0.804));
     
 }
 
