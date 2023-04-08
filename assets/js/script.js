@@ -23,6 +23,12 @@ const searchArr = [];
 // Notification visibility functions 
 let timeoutId;
 
+// Error Handling 
+let errorHandling = (previewError)=> {
+    console.log('Error fetching the API data:', previewError);
+    throw previewError;
+}
+
 // collect main weather data 
 const weatherForecast = async (searchInput, prevCity) => {
     try { 
@@ -60,8 +66,7 @@ const weatherForecast = async (searchInput, prevCity) => {
         }
 
     } catch (error) {
-        console.log('Error fetching the API data:', error);
-        throw error;
+        errorHandling();
     }
 };
     
@@ -87,9 +92,7 @@ const geocodeLocation = async (userInput) => {
         // return response 
         return weatherData;
     } catch(error) {
-        // Log an error if there's an issue with fetching API data 
-        console.error('Error fetching the API Data:', error);
-        throw error;
+        errorHandling();
     };
 };
 
@@ -104,8 +107,7 @@ const fetchFiveDay = async (userInput) => {
         return data;
 
     } catch (error) {
-        console.log ('Error when fetching weather data:', error)
-        throw error;
+        errorHandling();
     }
 };
 
@@ -176,7 +178,7 @@ const fiveDay = async (userInput) => {
         const data = await fetchFiveDay(userInput);
         fiveForecastCards(data);
     } catch (error) {
-        console.log('Error regarding fiveDay', error);
+        errorHandling();
     }
 };
 
