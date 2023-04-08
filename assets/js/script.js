@@ -116,7 +116,7 @@ const fiveDay = function(userInput) {
                 // Loop through the fetched data and create forecast cards
                 for (let i = 1; i < 6; i++) {
                     
-                    let {dt, main, weather, wind} = data.list[i];
+                    let { dt, main, weather, wind } = data.list[i];
 
                     // div wrapper for content
                     let fiveStyleDiv = document.createElement('div');
