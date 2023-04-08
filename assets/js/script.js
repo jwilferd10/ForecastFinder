@@ -67,28 +67,31 @@ const weatherForecast = function(searchInput, prevCity) {
 };
     
 // Fetch location data from geocode API 
-const geocodeLocation = userInput => {
-    
-    // Encode userInput for the URL search
-    const encodedInput = encodeURIComponent(userInput);
+const geocodeLocation = async (userInput) => {
+    try {
 
-    // Construct URL for geocode API search
-    const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
+        // Encode userInput and construct URL for search 
+        const encodedInput = encodeURIComponent(userInput);
+        const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
+        
+        // Fetch location data from API 
+        const response = await fetch(encodedSearch)
 
-    // fetch from geoCode API 
-    return fetch(encodedSearch)
-        .then(response => {
-            if(!response.ok) {
-                // Throw error if location data fetch fails
-                throw new Error('Something went wrong fetching location data!');
-            }
-            // parsing JSON response
-            return response.json() 
-        })
-        .catch(error => {
-            // Log an error if there's an issue with fetching API data 
-            console.error('Error fetching API Data:', error);
-        });
+        if(!response.ok) {
+            // Throw error if location data fetch fails
+            throw new Error('Something went wrong fetching location data!');
+        }
+        
+        // parsing JSON response
+        const weatherData = await response.json();
+
+        // return response 
+        return weatherData;
+    } catch(error) {
+        // Log an error if there's an issue with fetching API data 
+        console.error('Error fetching the API Data:', error);
+        throw error;
+    };
 };
 
 // Function to fetch 5-Day weather forecast for a given location
