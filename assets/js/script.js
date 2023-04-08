@@ -23,38 +23,33 @@ const searchArr = [];
 // Notification visibility functions 
 let timeoutId;
 
-// collect weather data 
-const weatherForecast = function(searchInput, prevCity) {
-
-    userInput = searchInput || prevCity;
-
-    // if userInput is true, proceed to API
-    if (userInput) {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${userInput}&APPID=${appID}&units=${units}`)
-
-        .then(result => {
-        return result.json();
-        })
-        .then(result => {
-            if (result.error) {
-                window.alert('Something went wrong!');
-            } else {
-                // user notification
-                notifyUserEl.textContent = 'Search Successful!';
-                notifyUserEl.style.color = 'var(--success)';
-                showElement();
-
-                // collect weather results
-                findWeather(result); 
-
-                // five day call
-                fiveDay(userInput);
-
-                // create new listItem using userInput 
-                previousSearches(userInput);
+// collect main weather data 
+const weatherForecast = async (searchInput, prevCity) => {
+    try { 
+        
+        // consolidate the two arguments to pass onto API link
+        const userInput = searchInput || prevCity;
+        if (userInput) {
+            let searchLink = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&APPID=${appID}&units=${units}`
+            const response = await fetch(searchLink);
+            
+            if (!response.ok) {
+                throw new Error('Something is wrong, please try again later!')
             }
-        })
-        .catch(error => {
+
+            const result = await response.json();
+
+            // user notification
+            notifyUserEl.textContent = 'Search Successful!';
+            notifyUserEl.style.color = 'var(--success)';
+            showElement();
+            
+            // Invoke additional functions for weather results and previous searches
+            findWeather(result); 
+            fiveDay(userInput);
+            previousSearches(userInput);
+
+        } else {
             // if error exists, inform user
             window.alert('Please enter a valid city name!');
 
@@ -62,7 +57,11 @@ const weatherForecast = function(searchInput, prevCity) {
             notifyUserEl.textContent = 'Something went wrong!';
             notifyUserEl.style.color = 'var(--red)';
             showElement();
-        });
+        }
+
+    } catch (error) {
+        console.log('Error fetching the API data:', error);
+        throw error;
     }
 };
     
