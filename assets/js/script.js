@@ -24,7 +24,7 @@ const searchArr = [];
 let timeoutId;
 
 // Error Handling 
-let errorHandling = (previewError)=> {
+let errorHandling = (previewError) => {
     console.log('Error fetching the API data:', previewError);
     throw previewError;
 }
@@ -66,7 +66,7 @@ const weatherForecast = async (searchInput, prevCity) => {
         }
 
     } catch (error) {
-        errorHandling();
+        errorHandling(error);
     }
 };
     
@@ -92,7 +92,7 @@ const geocodeLocation = async (userInput) => {
         // return response 
         return weatherData;
     } catch(error) {
-        errorHandling();
+        errorHandling(error);
     };
 };
 
@@ -107,7 +107,7 @@ const fetchFiveDay = async (userInput) => {
         return data;
 
     } catch (error) {
-        errorHandling();
+        errorHandling(error);
     }
 };
 
@@ -178,24 +178,24 @@ const fiveDay = async (userInput) => {
         const data = await fetchFiveDay(userInput);
         fiveForecastCards(data);
     } catch (error) {
-        errorHandling();
+        errorHandling(error);
     }
 };
 
 // Notification visibility functions 
-let showElement = function() {
+const showElement = () => {
     // cancel previous timeout
     clearTimeout(timeoutId);
     notifyUserEl.style.display = 'block';
     timeoutId = setTimeout(hideElement, 3000);
 };
 
-let hideElement = function() {
+const hideElement = () =>  {
     notifyUserEl.style.display='none';
 };
 
 // Function runs when both formEntry means are engaged
-let handleSearch = function(event) {
+const handleSearch = event => {
     event.preventDefault();
     
     // if searchInputEl is empty, remind user to type something
@@ -214,7 +214,7 @@ let handleSearch = function(event) {
 };
 
 // Create a function that'll initialize the application and return the user input to the HTML
-let findWeather = function(resultFromServer) {    
+const findWeather = resultFromServer => {    
     // remove hidden 
     document.getElementById('weatherDetails').classList.remove('hidden');
 
@@ -244,7 +244,7 @@ let findWeather = function(resultFromServer) {
 };
 
 // Create HTML elements to store the data and display to front-end
-let previousSearches = function(userInput) {
+const previousSearches = (userInput) => {
 
     // using some() method, see if userInput already exists within array
     let cityExists = searchArr.some(city => city.text === userInput);
@@ -299,12 +299,12 @@ let previousSearches = function(userInput) {
 }
 
 // save content within searchArr to previousSearch and into localStorage
-let saveCity = function() {
+const saveCity = () => {
     localStorage.setItem('previousSearch', JSON.stringify(searchArr));
 }
 
 // Re-create every HTML element saved to previousSearch
-let loadCityList = function() {
+const loadCityList = () => {
     let savedData = localStorage.getItem('previousSearch');
 
     if(!savedData) {
@@ -320,7 +320,7 @@ let loadCityList = function() {
 }
 
 // Function clears 'Previous Searches' when 'clearBtn' is clicked 
-let clearHistory = function() {
+const clearHistory = () => {
     let checkWithUser = window.confirm('Confirm that you want to clear this list');
 
     if (checkWithUser) {
