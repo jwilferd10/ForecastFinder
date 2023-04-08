@@ -14,7 +14,7 @@ const locationResultEl = document.getElementById('locationResult');
 // DOM Element references for search functionality 
 const searchInputEl = document.getElementById('searchInput');
 const fiveDayBodyEl = document.getElementById('fiveDayBody');
-let notifyUserEl = document.getElementById('notifyUser');
+const notifyUserEl = document.getElementById('notifyUser');
 
 // Variables tracking search history 
 let previousSearchID = 0;
@@ -24,7 +24,7 @@ const searchArr = [];
 let timeoutId;
 
 // collect weather data 
-let weatherForecast = function(searchInput, prevCity) {
+const weatherForecast = function(searchInput, prevCity) {
 
     userInput = searchInput || prevCity;
 
@@ -73,7 +73,7 @@ const geocodeLocation = function(userInput) {
     const encodedInput = encodeURIComponent(userInput);
 
     // Construct URL for geocode API search
-    const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`
+    const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
 
     // fetch from geoCode API 
     return fetch(encodedSearch)
@@ -100,8 +100,9 @@ const fiveDay = function(userInput) {
     // Fetch latitude and longitude from geocodeLocation API
     geocodeLocation(userInput) 
         .then (weatherData => {
-            const lat = weatherData[0].lat;
-            const lon = weatherData[0].lon;
+
+            // Using object destructuring to extract lat and lon from weatherDatae
+            const { lat, lon } = weatherData[0]
 
             // Construct URL for 5-Day forecast API with lat, lon, units, and appID
             const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
@@ -115,7 +116,7 @@ const fiveDay = function(userInput) {
                 // Loop through the fetched data and create forecast cards
                 for (let i = 1; i < 6; i++) {
                     
-                    let list = data.list[i];
+                    let {dt, main, weather, wind} = data.list[i];
 
                     // div wrapper for content
                     let fiveStyleDiv = document.createElement('div');
@@ -126,7 +127,7 @@ const fiveDay = function(userInput) {
                     fiveHeaderEl.classList.add('card-header', 'text-center');
                     
                     // convert unix to miliseconds and create new Date object and increment date
-                    let dateFormat = new Date(list.dt * 1000);
+                    let dateFormat = new Date(dt * 1000);
                     let date = new Date(dateFormat.setDate(dateFormat.getDate() + i));
                     let dateString = date.toLocaleDateString();
                     
@@ -140,23 +141,23 @@ const fiveDay = function(userInput) {
                     // weather img
                     let fiveDayImg = document.createElement('img');
                     fiveDayImg.id = 'fiveWeatherPNG';
-                    fiveDayImg.src = `http://openweathermap.org/img/w/${list.weather[0].icon}.png`;
+                    fiveDayImg.src = `http://openweathermap.org/img/w/${weather[0].icon}.png`;
                     fiveDayImg.classList.add('fiveBody', 'weatherImgShadow');
 
                     // temp
                     let fiveTempEl = document.createElement('p');
                     fiveTempEl.classList.add('card-text', 'fiveBody');
-                    fiveTempEl.textContent = 'Temp: ' + Math.floor(list.main.temp) + '°F';
+                    fiveTempEl.textContent = 'Temp: ' + Math.floor(main.temp) + '°F';
             
                     // humidity
                     let fiveHumidEl = document.createElement('p');
                     fiveHumidEl.classList.add('card-text', 'fiveBody');
-                    fiveHumidEl.textContent = 'Humidity: ' + list.main.humidity + '%'; 
+                    fiveHumidEl.textContent = 'Humidity: ' + main.humidity + '%'; 
             
                     // wind 
                     let fiveWindEl = document.createElement('p');
                     fiveWindEl.classList.add('card-text', 'fiveBody');
-                    fiveWindEl.textContent = 'Wind: ' + Math.floor(list.wind.speed) + ' MPH';
+                    fiveWindEl.textContent = 'Wind: ' + Math.floor(wind.speed) + ' MPH';
             
                     // Append temp, humidity, wind to fiveBodyEl
                     fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
