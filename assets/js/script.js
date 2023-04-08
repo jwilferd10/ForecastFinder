@@ -20,6 +20,9 @@ let notifyUserEl = document.getElementById('notifyUser');
 let previousSearchID = 0;
 const searchArr = [];
 
+// Notification visibility functions 
+let timeoutId;
+
 // collect weather data 
 let weatherForecast = function(searchInput, prevCity) {
 
@@ -173,8 +176,10 @@ const fiveDay = function(userInput) {
 
 // Notification visibility functions 
 let showElement = function() {
+    // cancel previous timeout
+    clearTimeout(timeoutId);
     notifyUserEl.style.display = 'block';
-    setTimeout(hideElement, 3000);
+    timeoutId = setTimeout(hideElement, 3000);
 };
 
 let hideElement = function() {
