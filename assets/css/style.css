@@ -59,6 +59,7 @@ body {
     padding-left: 8px;
     margin-bottom: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 .rightContainer {
