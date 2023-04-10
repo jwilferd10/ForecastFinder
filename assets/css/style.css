@@ -67,11 +67,13 @@ body {
 
 .listItem:hover {
     translate: 2px 1px;
-    transition: 0.1s
+    transition: 0.1s;
+    background: #805d9bdb
 }
 
 .listItem:active {
     translate: 2px 4px;
+    background: #321846b0;
 }
 
 .rightContainer {
