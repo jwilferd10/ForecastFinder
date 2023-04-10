@@ -6,11 +6,15 @@
     --tertiary-color: null; */
 }
 
+#gitHubLink {
+    text-decoration: none;
+}
+
 #finderText {
     background-image: linear-gradient(to right, rgb(137, 62, 167), rgba(15, 15, 228, 0.868));
     background-clip: text;
-    -webkit-background-clip: text;
     color: transparent;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
