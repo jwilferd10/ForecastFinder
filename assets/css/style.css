@@ -57,9 +57,21 @@ body {
 
 .listItem {
     padding-left: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     text-align: center;
     cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.listItem:hover {
+    translate: 2px 1px;
+    transition: 0.1s
+}
+
+.listItem:active {
+    translate: 2px 4px;
 }
 
 .rightContainer {
