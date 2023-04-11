@@ -23,7 +23,7 @@
         <main>
             <section class="container-fluid d-flex">
                 <!-- Search Form (Top Left of Page) -->
-                <div class="searchBar col-3 border">
+                <div id="formWrapper" class="searchBar col-3 border">
                     <h3 class="pt-4 pb-1 text-light">Search For A City</h3>
                     <form id="formID">
                         <input id="searchInput" class="mb-2 form-control" type="text" placeholder="Ex: San Antonio">
@@ -37,7 +37,7 @@
                     <ul id="locationResult">
                         <!-- List items  -->
                     </ul>
-                    <p id="notifyUser" class="text-center"></p>
+                    <p id="notifyUser" class="text-center blinkAnimation"></p>
                 </div>
         
                 <!-- Weather Display Container (Right side of screen) -->

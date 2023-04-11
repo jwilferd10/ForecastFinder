@@ -65,6 +65,10 @@ body {
     padding-bottom: 20px;
 }
 
+.blinkAnimation {
+    animation: blinkEffect 1s linear infinite !important;
+}
+
 #locationResult {
     list-style-type: none !important;
     padding: 0;
@@ -133,3 +137,10 @@ body {
 .fiveBody {
     margin-bottom: 0.5rem;
 }
+
+/* Animations */
+@keyframes blinkEffect {
+    50% {
+        opacity: 0;
+    }
+  }

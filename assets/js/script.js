@@ -15,6 +15,7 @@ const locationResultEl = document.getElementById('locationResult');
 const searchInputEl = document.getElementById('searchInput');
 const fiveDayBodyEl = document.getElementById('fiveDayBody');
 const notifyUserEl = document.getElementById('notifyUser');
+const formWrapperEl = document.getElementById('formWrapper');
 
 // Variables tracking search history 
 let previousSearchID = 0;
