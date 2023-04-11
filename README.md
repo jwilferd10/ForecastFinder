@@ -1,8 +1,10 @@
-# Minimalist's Weather Dashboard!
+# ⛅ 🌦️ ForecastFinder ☁️🌫️
 
-:computer: **Live Deployment**: https://jwilferd10.github.io/Weather-Dashboard/
+## Your Weather Planning Companion!
 
-:computer: **Github Repository**: https://github.com/jwilferd10/Weather-Dashboard
+:computer: **Live Deployment**:
+
+:computer: **Github Repository**:
 
 ## :open_file_folder: Table of Contents:
   - [Preview](#camera-preview)
@@ -14,10 +16,10 @@
   - [Contact Information](#e-mail-contact-information)
 
 ## :camera: Preview:
-![image](dashboard.png)
+Coming Soon!
 
 ## :wave: Description: 
-Your Weather Dashboard is a weather app that utilizes openweathermap's API to display the current weather conditions for any searched city. Also displayed is the five day forecast for that city, users past saves are added onto a list of previously searched locations for quick and easy access.
+Coming Soon!
 
 ## :book: User Story:
 **AS A  busy traveler**
