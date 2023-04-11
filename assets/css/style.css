@@ -58,6 +58,12 @@ body {
 
 .border {
     border-radius: 25px;
+    border: 1px solid #dee2e6 !important;
+}
+
+#formWrapper {
+    border-radius: 25px;
+    border: 1px solid #dee2e6;
 }
 
 #notifyUser{
@@ -65,7 +71,15 @@ body {
     padding-bottom: 20px;
 }
 
-.blinkAnimation {
+.successAnimation {
+    animation: success 1s linear infinite !important;
+}
+
+.blinkRed {
+    animation: flashRed 1s linear infinite !important;
+}
+
+.notifyAnimation {
     animation: blinkEffect 1s linear infinite !important;
 }
 
@@ -143,4 +157,28 @@ body {
     50% {
         opacity: 0;
     }
-  }
+}
+
+@keyframes success {
+    0% {
+        border-color: var(--success); /* Initial border color */
+      }
+      50% {
+        border-color: transparent; /* Transparent border color */
+      }
+      100% {
+        border-color: var(--success); /* Initial border color */
+      }
+}
+
+@keyframes flashRed {
+    0% {
+        border-color: var(--redText); /* Initial border color */
+      }
+      50% {
+        border-color: transparent; /* Transparent border color */
+      }
+      100% {
+        border-color: var(--redText); /* Initial border color */
+      }
+}

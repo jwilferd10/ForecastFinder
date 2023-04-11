@@ -49,6 +49,8 @@ const weatherForecast = async (searchInput, prevCity) => {
             // user notification
             notifyUserEl.textContent = 'Search Successful!';
             notifyUserEl.style.color = 'var(--success)';
+            notifyUserEl.classList.add('notifyAnimation');
+            formWrapperEl.classList.add('successAnimation');
             showElement();
             
             // Invoke additional functions for weather results and previous searches
@@ -63,6 +65,8 @@ const weatherForecast = async (searchInput, prevCity) => {
             // user notification
             notifyUserEl.textContent = 'Something went wrong!';
             notifyUserEl.style.color = 'var(--red)';
+            notifyUserEl.classList.add('notifyAnimation');
+            formWrapperEl.classList.add('blinkRed');
             showElement();
         }
 
@@ -193,6 +197,8 @@ const showElement = () => {
 
 const hideElement = () =>  {
     notifyUserEl.style.display='none';
+    formWrapperEl.classList.remove('successAnimation');
+    formWrapperEl.classList.remove('blinkRed');
 };
 
 // Function runs when both formEntry means are engaged
@@ -338,6 +344,8 @@ const clearHistory = () => {
         // user notification
         notifyUserEl.textContent = 'Search history deleted!';
         notifyUserEl.style.color = 'var(--red)';
+        notifyUserEl.classList.add('notifyAnimation');
+        formWrapperEl.classList.add('blinkRed');
         showElement();
     }    
 };
