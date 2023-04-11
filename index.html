@@ -10,15 +10,15 @@
     <body>
     
         <!-- Header -->
-        <header id="headerStyle" class="pb-2 mb-3 mt-3">
+        <nav id="headerStyle" class="pb-2 mb-3 mt-3">
             <div class="text-center">
-                <a href="https://github.com/jwilferd10/ForecastFinder" id= "gitHubLink" class="text-light borderStyle h1">
+                <a href="https://github.com/jwilferd10/ForecastFinder" target="_blank" id="gitHubLink" class="text-light borderStyle h1">
                     Forecast<span id="finderText">Finder</span></h1>
                 </a>
                 
                 <h3 class="text-light pt-3">Your Weather Planning Companion</h3>
             </div>
-        </header>
+        </nav>
         
         <main>
             <section class="container-fluid d-flex">
@@ -26,7 +26,7 @@
                 <div class="searchBar col-3 border">
                     <h3 class="pt-4 pb-1 text-light">Search For A City</h3>
                     <form id="formID">
-                        <input id="searchInput" class="mb-2 form-control" type="userInput" placeholder="Ex: San Antonio">
+                        <input id="searchInput" class="mb-2 form-control" type="text" placeholder="Ex: San Antonio">
                         <p id="notifyUser" class="text-center"></p>
                         <div class="pb-2 btn-group btn-lg btn-block formBtns">
                             <button type="button" class="btn btn-primary mr-2 rounded" id="searchButton"> Search </button>
@@ -36,7 +36,7 @@
                     <!-- Previous Searches -->
                     <h5 class="text-light pt-2">Previous Searches:</h5>
                     <ul class="pb-2" id="locationResult">
-                        <!-- <div class="card" id="locationResult">234234</div> -->
+                        <!-- List items  -->
                     </ul>
 
                 </div>
