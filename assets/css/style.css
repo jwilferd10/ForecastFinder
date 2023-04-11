@@ -62,6 +62,7 @@ body {
 
 #notifyUser{
     margin-bottom: 0px !important;
+    padding-bottom: 20px;
 }
 
 #locationResult {
