@@ -2,9 +2,27 @@
     --primary-color: #121212;
     --success: green;
     --redText: red;
-    /* --secondary-color: null;
-    --tertiary-color: null; */
+    --initial-border-color-success: var(--success);
+    --initial-border-color-red: var(--redText);
+    --transparent-border-color: transparent;
 }
+
+/* Used to toggle notifications */
+.hidden {
+    display: none;
+}
+
+body {
+    background-color: var(--primary-color);
+}
+
+/* Weather results PNG style */
+.weatherImgShadow {
+    filter: drop-shadow(0.5px 1px 3.5px rgba(110, 139, 162, 0.804));
+    
+}
+
+/* Header Related Styling */
 
 #gitHubLink {
     text-decoration: none;
@@ -22,9 +40,10 @@
     border-bottom: 3.5px solid;
     width: 16rem;
     margin: auto;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to right, white, rgba(255, 255, 255, 0.699), rgba(137, 62, 167, 0.466), rgb(15, 15, 228));
+    border-image: linear-gradient(to right, white, rgba(255, 255, 255, 0.699), rgba(137, 62, 167, 0.466), rgb(15, 15, 228)) 1;
 }
+
+/* Search Form Styling */
 
 #searchInput {
     background: transparent;
@@ -36,21 +55,8 @@
     color: black;
 }
 
-.formBtns {
-    margin-right: 10px !important;
-    border-color: white !important;
-}
-
 .cardColor {
-    background-color: #202020;
-}
-
-body {
-    background-color: var(--primary-color);
-}
-
-.hidden {
-    display: none;
+    background: #202020;
 }
 
 .container-fluid {
@@ -68,26 +74,15 @@ body {
 }
 
 #notifyUser{
-    margin-bottom: 0px !important;
     padding-bottom: 20px;
-}
-
-.successAnimation {
-    animation: success 1s linear infinite !important;
-}
-
-.blinkRed {
-    animation: flashRed 1s linear infinite !important;
-}
-
-.notifyAnimation {
-    animation: blinkEffect 1s linear infinite !important;
 }
 
 #locationResult {
     list-style-type: none !important;
     padding: 0;
 }
+
+/* Previous searches styling */
 
 .listItem {
     padding-left: 8px;
@@ -110,9 +105,12 @@ body {
     background: #321846b0;
 }
 
+/* Current conditions styling */
 .rightContainer {
     padding-bottom: 20px;
 }
+
+/* Five Day Styling */
 
 .card-header {
     border-top-left-radius: 25px !important;
@@ -127,11 +125,6 @@ body {
 #weatherDetails {
     margin-top: 20px;
     border-radius: 35px;
-}
-
-.weatherImgShadow {
-    filter: drop-shadow(0.5px 1px 3.5px rgba(110, 139, 162, 0.804));
-    
 }
 
 #fiveDayHeader {
@@ -154,6 +147,21 @@ body {
 }
 
 /* Animations */
+
+.successAnimation {
+    animation: success 1s linear infinite;
+}
+
+.blinkRed {
+    animation: flashRed 1s linear infinite;
+}
+
+.notifyAnimation {
+    animation: blinkEffect 1s linear infinite;
+}
+
+/* Keyframe Animations */
+
 @keyframes blinkEffect {
     50% {
         opacity: 0;
@@ -162,24 +170,24 @@ body {
 
 @keyframes success {
     0% {
-        border-color: var(--success); /* Initial border color */
+        border-color: var(--initial-border-color-success);
       }
       50% {
-        border-color: transparent; /* Transparent border color */
+        border-color: transparent; 
       }
       100% {
-        border-color: var(--success); /* Initial border color */
+        border-color: var(--initial-border-color-success);
       }
 }
 
 @keyframes flashRed {
     0% {
-        border-color: var(--redText); /* Initial border color */
+        border-color: var(--initial-border-color-red);
       }
       50% {
-        border-color: transparent; /* Transparent border color */
+        border-color: transparent;  
       }
       100% {
-        border-color: var(--redText); /* Initial border color */
+        border-color: var(--initial-border-color-red);
       }
 }
