@@ -160,6 +160,60 @@ body {
     animation: blinkEffect 1s linear infinite;
 }
 
+/* For screens smaller than the medium breakpoint (767px) */
+@media (max-width: 1035px) {
+    #fiveDayHeader {
+        margin-left: initial;
+        text-align: center;
+    }
+
+    .fiveContainer {
+        column-gap: initial;
+        margin-left: initial;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    #formWrapper {
+        order: 1; /* Move formWrapper to appear after rightContainer */
+        margin-bottom: 15px;
+    }
+    .rightContainer {
+        order: 2; /* Move rightContainer to appear before formWrapper */
+    }
+}
+
+@media (max-width: 487px) {
+    .fiveContainer{
+        margin-left: 13%;
+    }
+
+    #fiveDayBody {
+        flex-wrap: wrap;
+        column-gap: 30px;
+    }
+
+}
+
+@media (max-width: 420px) {
+    #fiveDayBody {
+        margin-left: 6%;
+    }
+}
+
+@media (max-width: 373px) {
+    #fiveDayBody {
+        margin-left: 1%;
+    }
+}
+
+@media (max-width: 353px) {
+    #fiveDayBody {
+        justify-content: center;
+    }
+}
+
 /* Keyframe Animations */
 
 @keyframes blinkEffect {
