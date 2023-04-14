@@ -2,9 +2,9 @@
 
 ## Your Weather Planning Companion!
 
-:computer: **Live Deployment**:
+:computer: **Live Deployment**: jwilferd10.github.io/ForecastFinder/
 
-:computer: **Github Repository**:
+:computer: **Github Repository**: https://github.com/jwilferd10/ForecastFinder
 
 ## :open_file_folder: Table of Contents:
   - [Preview](#camera-preview)
