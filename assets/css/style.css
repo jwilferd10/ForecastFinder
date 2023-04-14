@@ -175,6 +175,9 @@ body {
 }
 
 @media (max-width: 767px) {
+    .text-light {
+        text-align: center;
+    }
     #formWrapper {
         order: 1; /* Move formWrapper to appear after rightContainer */
         margin-bottom: 15px;
