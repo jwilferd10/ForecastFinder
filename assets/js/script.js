@@ -33,44 +33,54 @@ let errorHandling = (previewError) => {
 // collect main weather data 
 const weatherForecast = async (searchInput, prevCity) => {
     try { 
-        
         // consolidate the two arguments to pass onto API link
         const userInput = searchInput || prevCity;
-        if (userInput) {
-            let searchLink = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&APPID=${appID}&units=${units}`
-            const response = await fetch(searchLink);
-            
-            if (!response.ok) {
-                throw new Error('Something is wrong, please try again later!')
-            }
+        let searchLink;
 
-            const result = await response.json();
+        // default format
+        const countryFormat = 'us';
 
-            // user notification
-            notifyUserEl.textContent = 'Search Successful!';
-            notifyUserEl.style.color = 'var(--success)';
-            notifyUserEl.classList.add('notifyAnimation');
-            formWrapperEl.classList.add('successAnimation');
-            showElement();
-            
-            // Invoke additional functions for weather results and previous searches
-            findWeather(result); 
-            fiveDay(userInput);
-            previousSearches(userInput);
+        // using regex check if searchInput uses zip code format
+        // \d is a shorthand character class that will match any digit character between 0-9
+        const zipCodePattern = /^\d+$/;
 
+        if (zipCodePattern.test(userInput)) {
+            searchLink = `https://api.openweathermap.org/data/2.5/weather?zip=${userInput},${countryFormat}&APPID=${appID}&units=${units}`;
         } else {
-            // if error exists, inform user
-            window.alert('Please enter a valid city name!');
-
-            // user notification
-            notifyUserEl.textContent = 'Something went wrong!';
-            notifyUserEl.style.color = 'var(--red)';
-            notifyUserEl.classList.add('notifyAnimation');
-            formWrapperEl.classList.add('blinkRed');
-            showElement();
+            searchLink = `https://api.openweathermap.org/data/2.5/weather?q=${userInput}&APPID=${appID}&units=${units}`;
+        }
+            
+        const response = await fetch(searchLink);
+            
+        if (!response.ok) {
+            throw new Error('Something is wrong, please try again later!')
         }
 
+        const result = await response.json();
+
+        // user notification
+        notifyUserEl.textContent = 'Search Successful!';
+        notifyUserEl.style.color = 'var(--success)';
+        notifyUserEl.classList.add('notifyAnimation');
+        formWrapperEl.classList.add('successAnimation');
+        showElement();
+            
+        // Invoke additional functions for weather results and previous searches
+        findWeather(result); 
+        fiveDay(userInput);
+        previousSearches(userInput);
+
     } catch (error) {
+        // if error exists, inform user
+        window.alert('Please enter a valid city name!');
+
+        // user notification
+        notifyUserEl.textContent = 'Something went wrong!';
+        notifyUserEl.style.color = 'var(--red)';
+        notifyUserEl.classList.add('notifyAnimation');
+        formWrapperEl.classList.add('blinkRed');
+        showElement();
+        
         errorHandling(error);
     }
 };
@@ -352,8 +362,8 @@ const clearHistory = () => {
 
 // Event Listeners
 document.getElementById('searchButton').addEventListener('click', handleSearch);
-searchInputEl.addEventListener('keydown', (event) => { 
-if(event.code === 'Enter') {
+searchInputEl.addEventListener('keydown', async (event) => { 
+    if(event.code === 'Enter') {
         handleSearch(event);
     }
 });
