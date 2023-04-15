@@ -2,7 +2,7 @@
 
 ## Your Weather Planning Companion!
 
-:computer: **Live Deployment**: jwilferd10.github.io/ForecastFinder/
+:computer: **Live Deployment**: https://jwilferd10.github.io/ForecastFinder/
 
 :computer: **Github Repository**: https://github.com/jwilferd10/ForecastFinder
 
