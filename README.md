@@ -12,7 +12,7 @@
   - [Description](#wave-description)
   - [User Story](#book-user-story)
   - [Resources Used](#floppy_disk-resources-used)
-  - [Installation](#minidisc-installation-and-usage)
+  - [Getting Started](#minidisc-getting-started)
   - [Contact Information](#e-mail-contact-information)
 
 ## :camera: Preview:
@@ -22,17 +22,17 @@ Coming Soon!
 ForecastFinder is a weather dashboard app that allows users to search for weather information for a specific location using the OpenWeather API. With ForecastFinder, users can quickly and easily find the current weather conditions, as well as a five-day forecast, for any city around the world.
 
 ### Features
-- **Weather Search**: Users can search for weather information by city name or zip code. The app automatically detects if the input is a zip code and formats the API request accordingly.
+- 🔍 **Weather Search** 🔍: Users can search for weather information by city name or zip code. The app automatically detects if the input is a zip code and formats the API request accordingly.
 
-- **Current Weather Display**: The app displays the current weather conditions for the searched location, including temperature, weather description, humidity, and wind speed.
+- 🌫️ **Current Weather Display** 🌫️: The app displays the current weather conditions for the searched location, including temperature, weather description, humidity, and wind speed.
 
-- **Five-day Forecast**: ForecastFinder provides a five-day forecast that includes temperature, weather description, and weather icon for each day.
+- 📆 **Five-day Forecast** 📆: ForecastFinder provides a five-day forecast that includes temperature, weather description, and weather icon for each day.
 
-- **Previous Searches**: The app keeps track of previous searches made by the user, allowing them to easily access the weather information for previously searched cities.
+- 📍 **Previous Searches** 📍: The app keeps track of previous searches made by the user, allowing them to easily access the weather information for previously searched cities.
 
-- **User Notifications**: ForecastFinder provides user notifications for successful searches and error handling for invalid inputs or API errors.
+- 🗨️ **User Notifications** 🗨️: ForecastFinder provides user notifications for successful searches and error handling for invalid inputs or API errors.
 
-- **Responsive Design**: The app is responsive and can be accessed on different devices, including desktops, tablets, and mobile devices.
+- 📱 **Responsive Design** 📱: The app is responsive and can be accessed on different devices, including desktops, tablets, and mobile devices.
 
 Thank you so much for checking out ForecastFinder, this has been an educational boon for me and I appreciate any interest in checking the app out. I devoted time into ensuring the code is modularized and potentially useful. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files, Happy Coding! 
 
@@ -57,11 +57,11 @@ Thank you so much for checking out ForecastFinder, this has been an educational 
 - JavaScript
 - OpenWeather API
 
-## :minidisc: Installation and Usage:
-   - Enter the name of the city
-   - Current conditions appear on the main box.
-   - Five day forecast appears at the bottom of current conditions
-   - For each search, previously searched cities will appear under the search input
+## :minidisc: Getting Started:
+   - Enter a city name or zip code in the search input field.
+   - Press Enter or click the Search button to retrieve the weather information for the entered location.
+   - View the current weather conditions and the five-day forecast on the app.
+   - Access previous search results by clicking on the search history buttons.
   
 ## :e-mail: Contact Information:
 - ### [jwilferd10](https://github.com/jwilferd10)
