@@ -286,7 +286,7 @@ const findWeather = resultFromServer => {
     humidityEl.innerHTML = 'Humidity: ' + resultFromServer.main.humidity + '%';
 
     // Console.log the results from the server
-    console.log(resultFromServer);
+    // console.log(resultFromServer);
 };
 
 // Create HTML elements to store the data and display to front-end
