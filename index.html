@@ -29,7 +29,7 @@
                         <input id="searchInput" class="mb-2 form-control" type="text" placeholder="Enter City Name or Zip Code">
                         <div class="pb-2 btn-group btn-lg btn-block formBtns">
                             <button type="button" class="btn mr-2 rounded btn-outline-primary" id="searchButton"> Search </button>
-                            <button type="button" class="btn ml-2 rounded btn-outline-danger" id="clearBtn"> Clear History </button>
+                            <button type="button" class="btn ml-2 rounded btn-outline-danger" id="clearBtn" data-toggle="modal" data-target="#modalNotify" onClick="clearHistory()"> Clear History </button>
                         </div>
                     </form>
                     <!-- Previous Searches -->
@@ -68,7 +68,34 @@
                     <!-- Dynamically Generated Content -->
                 </div>
             </section>
-        </main>      
+        </main>  
+        
+        <div class="modal fade" id="modalNotify" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <!-- Modal header -->
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalTitle">Modal Title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <p id="modalText">Modal body text goes here.</p>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" id="modalActionBtn" class="btn" data-dismiss="modal"></button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="assets/js/script.js"></script>
     </body>
 </html>

@@ -22,12 +22,38 @@ let previousSearchID = 0;
 const searchArr = [];
 
 // Notification visibility functions 
+const modalNotifyEl = document.getElementById('modalNotify');
+const modalTitleEl = document.getElementById('modalTitle');
+const modalTextEl = document.getElementById('modalText');
+const closeButtonEl = document.querySelector('#modalNotify .modal-footer .btn-secondary');
+const xButtonEl = document.querySelector('#modalNotify .modal-header .close');
+const modalActionBtnEl = document.querySelector('#modalActionBtn');
 let timeoutId;
 
 // Error Handling 
 let errorHandling = (previewError) => {
     console.log('Error fetching the API data:', previewError);
     throw previewError;
+}
+
+// Notification visibility functions 
+const showElement = () => {
+    // cancel previous timeout
+    clearTimeout(timeoutId);
+    notifyUserEl.style.display = 'block';
+    timeoutId = setTimeout(hideElement, 3000);
+};
+
+const hideElement = () =>  {
+    notifyUserEl.style.display='none';
+    formWrapperEl.classList.remove('successAnimation');
+    formWrapperEl.classList.remove('blinkRed');
+};
+
+// Modal Visibility 
+const closeModal = () => {
+    modalNotifyEl.classList.remove('show');
+    modalNotifyEl.style.display = 'none';
 }
 
 // collect main weather data 
@@ -71,9 +97,16 @@ const weatherForecast = async (searchInput, prevCity) => {
         previousSearches(userInput);
 
     } catch (error) {
-        // if error exists, inform user
-        window.alert('Please enter a valid city name!');
+        // Show the modal
+        modalNotifyEl.classList.add('show');
+        modalNotifyEl.style.display = 'block';
+        
+        // Set the content inside the modal
+        modalTitleEl.textContent = 'Error';
+        modalTextEl.textContent = 'Please enter a valid city name!';
 
+        // Action btn within modal
+        modalActionBtnEl.classList.add('hidden');
         // user notification
         notifyUserEl.textContent = 'Something went wrong!';
         notifyUserEl.style.color = 'var(--red)';
@@ -197,29 +230,25 @@ const fiveDay = async (userInput) => {
     }
 };
 
-// Notification visibility functions 
-const showElement = () => {
-    // cancel previous timeout
-    clearTimeout(timeoutId);
-    notifyUserEl.style.display = 'block';
-    timeoutId = setTimeout(hideElement, 3000);
-};
-
-const hideElement = () =>  {
-    notifyUserEl.style.display='none';
-    formWrapperEl.classList.remove('successAnimation');
-    formWrapperEl.classList.remove('blinkRed');
-};
-
 // Function runs when both formEntry means are engaged
 const handleSearch = event => {
     event.preventDefault();
     
     // if searchInputEl is empty, remind user to type something
     if(searchInputEl.value === '') {
-        window.alert('Fill out the searchbar!')
-    } else {
+        // window.alert('Fill out the searchbar!')
 
+        // Show the modal
+        modalNotifyEl.classList.add('show');
+        modalNotifyEl.style.display = 'block';
+        
+        // Set the content inside the modal
+        modalTitleEl.textContent = 'Error';
+        modalTextEl.textContent = 'Fill out the searchbar!';
+
+        // Action btn within modal
+        modalActionBtnEl.classList.add('hidden');
+    } else {
         let searchInput = searchInputEl.value;
 
         // invoke weatherForecast
@@ -336,29 +365,47 @@ const loadCityList = () => {
     }
 }
 
-// Function clears 'Previous Searches' when 'clearBtn' is clicked 
+// Function clears 'Previous Searches' when modalActionBtnEl is clicked 
 const clearHistory = () => {
-    let checkWithUser = window.confirm('Confirm that you want to clear this list');
+    // Set the content inside the modal
+    modalTitleEl.textContent = 'Confirm';
+    modalTextEl.textContent = 'Click the "Clear History" button again to clear the list';
 
-    if (checkWithUser) {
-        // set the list back to an empty state
-        locationResultEl.innerHTML = ('');
+    // Action btn within modal
+    // If the user has invoked other modals, make sure hidden is removed from classList
+    if (modalActionBtnEl.classList.contains('hidden')) {
+        modalActionBtnEl.classList.remove('hidden');
+    }
 
-        // clear localStorage
-        localStorage.clear();
-        localStorage.removeItem('previousSearch');
+    modalActionBtnEl.classList.add('btn-outline-danger');
+    modalActionBtnEl.textContent = 'Clear History';
 
-        // clear localStorage array
-        previousSearch = [];
-        
-        // user notification
-        notifyUserEl.textContent = 'Search history deleted!';
-        notifyUserEl.style.color = 'var(--red)';
-        notifyUserEl.classList.add('notifyAnimation');
-        formWrapperEl.classList.add('blinkRed');
-        showElement();
-    }    
+    // call deleteProcess
+    modalActionBtnEl.addEventListener('click', () => {
+        deleteProcess();  
+    })
+
 };
+
+// Clear list and localStorage
+const deleteProcess = () => {
+    // set the list back to an empty state
+    locationResultEl.innerHTML = ('');
+
+    // clear localStorage
+    localStorage.clear();
+    localStorage.removeItem('previousSearch');
+
+    // clear localStorage array
+    previousSearch = [];
+            
+    // user notification
+    notifyUserEl.textContent = 'Search history deleted!';
+    notifyUserEl.style.color = 'var(--red)';
+    notifyUserEl.classList.add('notifyAnimation');
+    formWrapperEl.classList.add('blinkRed');
+    showElement();
+}
 
 // Event Listeners
 document.getElementById('searchButton').addEventListener('click', handleSearch);
@@ -368,5 +415,7 @@ searchInputEl.addEventListener('keydown', async (event) => {
     }
 });
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
+closeButtonEl.addEventListener('click', closeModal);
+xButtonEl.addEventListener('click', closeModal);
 
 loadCityList();
