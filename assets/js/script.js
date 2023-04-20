@@ -30,6 +30,11 @@ const xButtonEl = document.querySelector('#modalNotify .modal-header .close');
 const modalActionBtnEl = document.querySelector('#modalActionBtn');
 let timeoutId;
 
+// default format
+const countryFormat = 'us';
+// \d is a shorthand character class that will match any digit character between 0-9
+const zipCodePattern = /^\d+$/;
+
 // Error Handling 
 let errorHandling = (previewError) => {
     console.log('Error fetching the API data:', previewError);
@@ -62,13 +67,6 @@ const weatherForecast = async (searchInput, prevCity) => {
         // consolidate the two arguments to pass onto API link
         const userInput = searchInput || prevCity;
         let searchLink;
-
-        // default format
-        const countryFormat = 'us';
-
-        // using regex check if searchInput uses zip code format
-        // \d is a shorthand character class that will match any digit character between 0-9
-        const zipCodePattern = /^\d+$/;
 
         if (zipCodePattern.test(userInput)) {
             searchLink = `https://api.openweathermap.org/data/2.5/weather?zip=${userInput},${countryFormat}&APPID=${appID}&units=${units}`;
@@ -121,13 +119,18 @@ const weatherForecast = async (searchInput, prevCity) => {
 // Fetch location data from geocode API 
 const geocodeLocation = async (userInput) => {
     try {
-                // If userInput does not contain a comma, assume it is a US ZIP code
-                if (!userInput.includes(",")) {
-                    userInput = `${userInput},US`;
-                }
         // Encode userInput and construct URL for search 
         const encodedInput = encodeURIComponent(userInput);
-        const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
+
+        let encodedSearch;
+
+        if (zipCodePattern.test(userInput)) {
+            // Construct URL for zip code search
+            encodedSearch = `https://api.openweathermap.org/geo/1.0/zip?zip=${encodedInput},${countryFormat}&appid=${appID}`;
+        } else {
+            // Construct URL for city name search
+            encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
+        }
         
         // Fetch location data from API 
         const response = await fetch(encodedSearch)
@@ -139,6 +142,9 @@ const geocodeLocation = async (userInput) => {
         
         // parsing JSON response
         const weatherData = await response.json();
+       
+        // View weatherData content
+        // console.log(weatherData);
 
         // return response 
         return weatherData;
@@ -150,12 +156,31 @@ const geocodeLocation = async (userInput) => {
 // Function to fetch 5-Day weather forecast for a given location
 const fetchFiveDay = async (userInput) => {
     try {
+        // Call geocodeLocation function with userInput to get location data
         const weatherData = await geocodeLocation(userInput);
-        const { lat, lon } = weatherData[0]
-        // const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
+
+        // initialize lat & lon to 'undefined'
+        let lat, lon;
+
+        // Check if the userInput is a zip code or a city name
+        if (zipCodePattern.test(userInput)) {
+            // If the userInput is a zip code, set lat and lon to the values from weatherData
+            lat = weatherData.lat;
+            lon = weatherData.lon;
+        } else {
+            // If the userInput is a city name, set lat and lon to the first values in the array from weatherData
+            lat = weatherData[0].lat;
+            lon = weatherData[0].lon;
+        }
+
+        // Construct the URL for the oneCall API
         const oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=current,minutely,hourly,alerts&appid=${appID}`;
+       
+        // Fetch data from the oneCall API
         const response = await fetch(oneCallURL);
         const data = await response.json();
+        
+        // Return the 5-day forecast
         return data.daily.slice(1, 6);
 
     } catch (error) {
