@@ -121,7 +121,10 @@ const weatherForecast = async (searchInput, prevCity) => {
 // Fetch location data from geocode API 
 const geocodeLocation = async (userInput) => {
     try {
-
+                // If userInput does not contain a comma, assume it is a US ZIP code
+                if (!userInput.includes(",")) {
+                    userInput = `${userInput},US`;
+                }
         // Encode userInput and construct URL for search 
         const encodedInput = encodeURIComponent(userInput);
         const encodedSearch = `https://api.openweathermap.org/geo/1.0/direct?q=${encodedInput}&appid=${appID}`;
@@ -149,10 +152,11 @@ const fetchFiveDay = async (userInput) => {
     try {
         const weatherData = await geocodeLocation(userInput);
         const { lat, lon } = weatherData[0]
-        const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
-        const response = await fetch(fiveForecast);
+        // const fiveForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${appID}`;
+        const oneCallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=${units}&exclude=current,minutely,hourly,alerts&appid=${appID}`;
+        const response = await fetch(oneCallURL);
         const data = await response.json();
-        return data;
+        return data.daily.slice(1, 6);
 
     } catch (error) {
         errorHandling(error);
@@ -164,10 +168,10 @@ const fiveForecastCards = (data) => {
     fiveDayBodyEl.innerHTML = '';
 
     // Loop through the fetched data and create forecast cards
-    for (let i = 1; i < 6; i++) {
+    data.forEach(dayData => {
                         
         // object destructuring to extract specific data 
-        let { dt, main, weather, wind } = data.list[i];
+        let { dt, temp, weather, wind_speed, humidity } = dayData;
 
         // div wrapper for content
         let fiveStyleDiv = document.createElement('div');
@@ -179,7 +183,7 @@ const fiveForecastCards = (data) => {
         
         // convert unix to miliseconds and create new Date object and increment date
         let dateFormat = new Date(dt * 1000);
-        let date = new Date(dateFormat.setDate(dateFormat.getDate() + i));
+        let date = new Date(dateFormat.setDate(dateFormat.getDate()));
         let dateString = date.toLocaleDateString();
         
         // Add the date 
@@ -198,17 +202,17 @@ const fiveForecastCards = (data) => {
         // temp
         let fiveTempEl = document.createElement('p');
         fiveTempEl.classList.add('card-text', 'fiveBody');
-        fiveTempEl.textContent = 'Temp: ' + Math.floor(main.temp) + '°F';
+        fiveTempEl.textContent = 'Temp: ' + Math.floor(temp.day) + '°F';
 
         // humidity
         let fiveHumidEl = document.createElement('p');
         fiveHumidEl.classList.add('card-text', 'fiveBody');
-        fiveHumidEl.textContent = 'Humidity: ' + main.humidity + '%'; 
+        fiveHumidEl.textContent = 'Humidity: ' + humidity + '%'; 
 
         // wind 
         let fiveWindEl = document.createElement('p');
         fiveWindEl.classList.add('card-text', 'fiveBody');
-        fiveWindEl.textContent = 'Wind: ' + Math.floor(wind.speed) + ' MPH';
+        fiveWindEl.textContent = 'Wind: ' + Math.floor(wind_speed) + ' MPH';
 
         // Append temp, humidity, wind to fiveBodyEl
         fiveBodyEl.append(fiveDayImg, fiveTempEl, fiveHumidEl, fiveWindEl);
@@ -218,7 +222,7 @@ const fiveForecastCards = (data) => {
         
         // Append fiveStyleDiv to fiveDayBody
         fiveDayBody.append(fiveStyleDiv);
-    }
+    });
 };
 
 const fiveDay = async (userInput) => {
