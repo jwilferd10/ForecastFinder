@@ -439,7 +439,7 @@ const deleteProcess = () => {
 // Event Listeners
 document.getElementById('searchButton').addEventListener('click', handleSearch);
 searchInputEl.addEventListener('keydown', async (event) => { 
-    if(event.code === 'Enter') {
+    if(event.code === 'Enter' || event.code === 'NumpadEnter') {
         handleSearch(event);
     }
 });
