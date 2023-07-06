@@ -30,6 +30,8 @@ const xButtonEl = document.querySelector('#modalNotify .modal-header .close');
 const modalActionBtnEl = document.querySelector('#modalActionBtn');
 let timeoutId;
 
+const infoBtnEl = document.getElementById('infoBtn');
+
 // default format
 const countryFormat = 'us';
 // \d is a shorthand character class that will match any digit character between 0-9
@@ -436,6 +438,20 @@ const deleteProcess = () => {
     showElement();
 }
 
+// Info Btn & Information
+const toggleInfo = () => {
+    // Show the modal
+    modalNotifyEl.classList.add('show');
+    modalNotifyEl.style.display = 'block';
+            
+    // Set the content inside the modal
+    modalTitleEl.textContent = 'For Best Use...';
+    modalTextEl.textContent = 'For more accurate results, search for a cities zip code rather than the name. There can be multiple locations with the same name, meaning less accurate results! ';
+    
+    // Action btn within modal
+    modalActionBtnEl.classList.add('hidden');
+}
+
 // Event Listeners
 document.getElementById('searchButton').addEventListener('click', handleSearch);
 searchInputEl.addEventListener('keydown', async (event) => { 
@@ -446,5 +462,6 @@ searchInputEl.addEventListener('keydown', async (event) => {
 document.getElementById('clearBtn').addEventListener('click', clearHistory);
 closeButtonEl.addEventListener('click', closeModal);
 xButtonEl.addEventListener('click', closeModal);
+infoBtnEl.addEventListener('click', toggleInfo);
 
 loadCityList();

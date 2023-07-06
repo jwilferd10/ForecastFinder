@@ -24,7 +24,11 @@
             <section class=" d-flex flex-wrap">
                 <!-- Search Form (Top Left of Page) -->
                 <div id="formWrapper" class="searchBar col-md-3 col-sm-12 mr-md-3">
-                    <h3 class="pt-4 pb-1 text-light">Search For A City</h3>
+                    <div class="d-flex align-items-center">
+                        <h3 class="pt-4 pb-1 text-light">Search For A City</h3> 
+                        <button id="infoBtn" class="btn-lg btn btn-outline-info ml-3" data-toggle="modal" data-target="#directionsModal">i</button>
+                    </div>
+
                     <form id="formID">
                         <input id="searchInput" class="mb-2 form-control" type="text" placeholder="Enter City Name or Zip Code">
                         <div class="pb-2 btn-group btn-lg btn-block formBtns">

@@ -45,6 +45,15 @@ body {
 
 /* Search Form Styling */
 
+#infoBtn {
+    border-radius: 60px;
+    width: 35px;
+    height: 35px;
+    padding-top: 2px;
+    padding-left: 14px;
+    margin-top: 10px;
+}
+
 #searchInput {
     background: transparent;
     color: white;
