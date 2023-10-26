@@ -16,7 +16,8 @@
   - [Contact Information](#e-mail-contact-information)
 
 ## :camera: Preview:
-Coming Soon!
+![image](assets/imgs/ForecastFinder.gif)
+![image](assets/imgs/ForecastFinderMobile.gif)
 
 ## :wave: Description: 
 ForecastFinder is a weather dashboard app that allows users to search for weather information for a specific location using the OpenWeather API. With ForecastFinder, users can quickly and easily find the current weather conditions, as well as a five-day forecast, for any city around the world.
