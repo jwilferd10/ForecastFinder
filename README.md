@@ -35,6 +35,9 @@ ForecastFinder is a weather dashboard app that allows users to search for weathe
 
 - **Responsive Design**: The app is responsive and can be accessed on different devices, including desktops, tablets, and mobile devices.
 
+### 💭 Developer Notes:
+ForecastFinder was originally a generic Weather-Dashboard that I created during my cohort in the UCLA Coding Bootcamp. Driven by a commitment to demonstrating my capability to see projects through to completion, ForecastFinder has undergone a transformation into a more customized and refined Weather Dashboard. Noteworthy additions encompass the integration of color-coded user notifications and the implementation of an instructional modal, both of which enhance the application's functionality and user experience.
+
 ### 🙏 Thank you 
 So much for checking out ForecastFinder, this has been an educational boon for me and I appreciate any interest in checking the app out. I devoted time into ensuring the code is modularized and potentially useful. It's my hope that this application helps YOU out in anyway possible. Feel free to take a look through the files, Happy Coding! 
 
